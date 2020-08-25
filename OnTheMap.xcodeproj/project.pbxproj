@@ -13,6 +13,10 @@
 		9CD145A824F5A6490010EC69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145A624F5A6490010EC69 /* Main.storyboard */; };
 		9CD145AA24F5A64F0010EC69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145A924F5A64F0010EC69 /* Assets.xcassets */; };
 		9CD145AD24F5A64F0010EC69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145AB24F5A64F0010EC69 /* LaunchScreen.storyboard */; };
+		9CD145BA24F5AAF10010EC69 /* GatewayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145B924F5AAF10010EC69 /* GatewayFactory.swift */; };
+		9CD145BC24F5AB560010EC69 /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145BB24F5AB560010EC69 /* Gateway.swift */; };
+		9CD145BE24F5AB790010EC69 /* MockGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145BD24F5AB790010EC69 /* MockGateway.swift */; };
+		9CD145C024F5AB9B0010EC69 /* HttpGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145BF24F5AB9B0010EC69 /* HttpGateway.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		9CD145A924F5A64F0010EC69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CD145AC24F5A64F0010EC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CD145AE24F5A64F0010EC69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CD145B924F5AAF10010EC69 /* GatewayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayFactory.swift; sourceTree = "<group>"; };
+		9CD145BB24F5AB560010EC69 /* Gateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
+		9CD145BD24F5AB790010EC69 /* MockGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGateway.swift; sourceTree = "<group>"; };
+		9CD145BF24F5AB9B0010EC69 /* HttpGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpGateway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 		9CD145B824F5A7B30010EC69 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9CD145B924F5AAF10010EC69 /* GatewayFactory.swift */,
+				9CD145BB24F5AB560010EC69 /* Gateway.swift */,
+				9CD145BD24F5AB790010EC69 /* MockGateway.swift */,
+				9CD145BF24F5AB9B0010EC69 /* HttpGateway.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -179,8 +191,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CD145A524F5A6490010EC69 /* ViewController.swift in Sources */,
+				9CD145BA24F5AAF10010EC69 /* GatewayFactory.swift in Sources */,
+				9CD145BE24F5AB790010EC69 /* MockGateway.swift in Sources */,
 				9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */,
+				9CD145C024F5AB9B0010EC69 /* HttpGateway.swift in Sources */,
 				9CD145A324F5A6490010EC69 /* SceneDelegate.swift in Sources */,
+				9CD145BC24F5AB560010EC69 /* Gateway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

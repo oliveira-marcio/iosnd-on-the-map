@@ -12,7 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("Hi")
+        
+        let gateway = GatewayFactory.create()
+        print(gateway.get())
     }
 }
