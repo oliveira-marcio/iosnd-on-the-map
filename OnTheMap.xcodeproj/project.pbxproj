@@ -17,6 +17,12 @@
 		9CD145BC24F5AB560010EC69 /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145BB24F5AB560010EC69 /* Gateway.swift */; };
 		9CD145BE24F5AB790010EC69 /* MockGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145BD24F5AB790010EC69 /* MockGateway.swift */; };
 		9CD145C024F5AB9B0010EC69 /* HttpGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145BF24F5AB9B0010EC69 /* HttpGateway.swift */; };
+		9CD145C724F5B1170010EC69 /* post-student-location.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C124F5B1170010EC69 /* post-student-location.json */; };
+		9CD145C824F5B1170010EC69 /* put-student-location.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C224F5B1170010EC69 /* put-student-location.json */; };
+		9CD145C924F5B1170010EC69 /* post-session.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C324F5B1170010EC69 /* post-session.json */; };
+		9CD145CA24F5B1170010EC69 /* delete-session.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C424F5B1170010EC69 /* delete-session.json */; };
+		9CD145CB24F5B1170010EC69 /* get-student-locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C524F5B1170010EC69 /* get-student-locations.json */; };
+		9CD145CC24F5B1170010EC69 /* get-user-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C624F5B1170010EC69 /* get-user-data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		9CD145BB24F5AB560010EC69 /* Gateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
 		9CD145BD24F5AB790010EC69 /* MockGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGateway.swift; sourceTree = "<group>"; };
 		9CD145BF24F5AB9B0010EC69 /* HttpGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpGateway.swift; sourceTree = "<group>"; };
+		9CD145C124F5B1170010EC69 /* post-student-location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "post-student-location.json"; sourceTree = "<group>"; };
+		9CD145C224F5B1170010EC69 /* put-student-location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "put-student-location.json"; sourceTree = "<group>"; };
+		9CD145C324F5B1170010EC69 /* post-session.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "post-session.json"; sourceTree = "<group>"; };
+		9CD145C424F5B1170010EC69 /* delete-session.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "delete-session.json"; sourceTree = "<group>"; };
+		9CD145C524F5B1170010EC69 /* get-student-locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "get-student-locations.json"; sourceTree = "<group>"; };
+		9CD145C624F5B1170010EC69 /* get-user-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "get-user-data.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +107,7 @@
 		9CD145B624F5A77D0010EC69 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				9CD145CF24F5B1AB0010EC69 /* MockData */,
 				9CD145A924F5A64F0010EC69 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -117,6 +130,35 @@
 				9CD145BF24F5AB9B0010EC69 /* HttpGateway.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		9CD145CD24F5B1540010EC69 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				9CD145C524F5B1170010EC69 /* get-student-locations.json */,
+				9CD145C124F5B1170010EC69 /* post-student-location.json */,
+				9CD145C224F5B1170010EC69 /* put-student-location.json */,
+			);
+			path = Parse;
+			sourceTree = "<group>";
+		};
+		9CD145CE24F5B1880010EC69 /* Udacity */ = {
+			isa = PBXGroup;
+			children = (
+				9CD145C324F5B1170010EC69 /* post-session.json */,
+				9CD145C424F5B1170010EC69 /* delete-session.json */,
+				9CD145C624F5B1170010EC69 /* get-user-data.json */,
+			);
+			path = Udacity;
+			sourceTree = "<group>";
+		};
+		9CD145CF24F5B1AB0010EC69 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				9CD145CD24F5B1540010EC69 /* Parse */,
+				9CD145CE24F5B1880010EC69 /* Udacity */,
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,9 +219,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD145C824F5B1170010EC69 /* put-student-location.json in Resources */,
 				9CD145AD24F5A64F0010EC69 /* LaunchScreen.storyboard in Resources */,
 				9CD145AA24F5A64F0010EC69 /* Assets.xcassets in Resources */,
+				9CD145CC24F5B1170010EC69 /* get-user-data.json in Resources */,
+				9CD145CA24F5B1170010EC69 /* delete-session.json in Resources */,
+				9CD145C724F5B1170010EC69 /* post-student-location.json in Resources */,
+				9CD145C924F5B1170010EC69 /* post-session.json in Resources */,
 				9CD145A824F5A6490010EC69 /* Main.storyboard in Resources */,
+				9CD145CB24F5B1170010EC69 /* get-student-locations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
