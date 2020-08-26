@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Gateway {
-    func get() -> String
+    func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void)
 }

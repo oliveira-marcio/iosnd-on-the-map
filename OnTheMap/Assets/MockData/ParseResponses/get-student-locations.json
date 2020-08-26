@@ -11,8 +11,8 @@
             "objectId": "JhOtcRkxsh",
             "uniqueKey": "996618664",
             "updatedAt": "2015-03-09T22:04:50.315Z"
-        }
-        {  
+        },
+        {
             "createdAt":"2015-02-24T22:27:14.456Z",
             "firstName":"Jessica",
             "lastName":"Uelmen",
@@ -24,7 +24,7 @@
             "uniqueKey":"872458750",
             "updatedAt":"2015-03-09T22:07:09.593Z"
         },
-        {  
+        {
             "createdAt":"2015-02-24T22:30:54.442Z",
             "firstName":"Jason",
             "lastName":"Schatz",
@@ -47,6 +47,6 @@
             "objectId": "8ZEuHF5uX8",
             "uniqueKey": "2256298598",
             "updatedAt": "2015-03-09T22:06:11.615Z"
-        }        
+        }
     ]
 }

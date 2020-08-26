@@ -23,6 +23,8 @@
 		9CD145CA24F5B1170010EC69 /* delete-session.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C424F5B1170010EC69 /* delete-session.json */; };
 		9CD145CB24F5B1170010EC69 /* get-student-locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C524F5B1170010EC69 /* get-student-locations.json */; };
 		9CD145CC24F5B1170010EC69 /* get-user-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C624F5B1170010EC69 /* get-user-data.json */; };
+		9CD145D224F645D90010EC69 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145D124F645D90010EC69 /* StudentLocation.swift */; };
+		9CD145D424F646850010EC69 /* StudentLocationsResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145D324F646850010EC69 /* StudentLocationsResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		9CD145C424F5B1170010EC69 /* delete-session.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "delete-session.json"; sourceTree = "<group>"; };
 		9CD145C524F5B1170010EC69 /* get-student-locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "get-student-locations.json"; sourceTree = "<group>"; };
 		9CD145C624F5B1170010EC69 /* get-user-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "get-user-data.json"; sourceTree = "<group>"; };
+		9CD145D124F645D90010EC69 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		9CD145D324F646850010EC69 /* StudentLocationsResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 		9CD145B824F5A7B30010EC69 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9CD145D024F645A40010EC69 /* ParseResponses */,
 				9CD145B924F5AAF10010EC69 /* GatewayFactory.swift */,
 				9CD145BB24F5AB560010EC69 /* Gateway.swift */,
 				9CD145BD24F5AB790010EC69 /* MockGateway.swift */,
@@ -132,33 +137,42 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		9CD145CD24F5B1540010EC69 /* Parse */ = {
+		9CD145CD24F5B1540010EC69 /* ParseResponses */ = {
 			isa = PBXGroup;
 			children = (
 				9CD145C524F5B1170010EC69 /* get-student-locations.json */,
 				9CD145C124F5B1170010EC69 /* post-student-location.json */,
 				9CD145C224F5B1170010EC69 /* put-student-location.json */,
 			);
-			path = Parse;
+			path = ParseResponses;
 			sourceTree = "<group>";
 		};
-		9CD145CE24F5B1880010EC69 /* Udacity */ = {
+		9CD145CE24F5B1880010EC69 /* UdacityResponses */ = {
 			isa = PBXGroup;
 			children = (
 				9CD145C324F5B1170010EC69 /* post-session.json */,
 				9CD145C424F5B1170010EC69 /* delete-session.json */,
 				9CD145C624F5B1170010EC69 /* get-user-data.json */,
 			);
-			path = Udacity;
+			path = UdacityResponses;
 			sourceTree = "<group>";
 		};
 		9CD145CF24F5B1AB0010EC69 /* MockData */ = {
 			isa = PBXGroup;
 			children = (
-				9CD145CD24F5B1540010EC69 /* Parse */,
-				9CD145CE24F5B1880010EC69 /* Udacity */,
+				9CD145CD24F5B1540010EC69 /* ParseResponses */,
+				9CD145CE24F5B1880010EC69 /* UdacityResponses */,
 			);
 			path = MockData;
+			sourceTree = "<group>";
+		};
+		9CD145D024F645A40010EC69 /* ParseResponses */ = {
+			isa = PBXGroup;
+			children = (
+				9CD145D124F645D90010EC69 /* StudentLocation.swift */,
+				9CD145D324F646850010EC69 /* StudentLocationsResults.swift */,
+			);
+			path = ParseResponses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +255,9 @@
 				9CD145A524F5A6490010EC69 /* ViewController.swift in Sources */,
 				9CD145BA24F5AAF10010EC69 /* GatewayFactory.swift in Sources */,
 				9CD145BE24F5AB790010EC69 /* MockGateway.swift in Sources */,
+				9CD145D224F645D90010EC69 /* StudentLocation.swift in Sources */,
 				9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */,
+				9CD145D424F646850010EC69 /* StudentLocationsResults.swift in Sources */,
 				9CD145C024F5AB9B0010EC69 /* HttpGateway.swift in Sources */,
 				9CD145A324F5A6490010EC69 /* SceneDelegate.swift in Sources */,
 				9CD145BC24F5AB560010EC69 /* Gateway.swift in Sources */,

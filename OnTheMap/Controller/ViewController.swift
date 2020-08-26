@@ -14,6 +14,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let gateway = GatewayFactory.create()
-        print(gateway.get())
+        gateway.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
+        
+    }
+    
+    func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
+        print(studentLocations)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 struct HttpGateway: Gateway {
-    func get() -> String {
-        return "Real data"
+    func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
+        completion([], nil)
     }
 }
