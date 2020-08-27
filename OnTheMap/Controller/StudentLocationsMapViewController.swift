@@ -12,6 +12,12 @@ class StudentLocationsMapViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
     
+    var studentLocations: [StudentLocation]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.studentLocations
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +26,16 @@ class StudentLocationsMapViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        label.text = self.studentLocations.description
+    }
+    
     func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
-        label.text = studentLocations.description
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.studentLocations = studentLocations
+        
+        label.text = self.studentLocations.description
     }
 }

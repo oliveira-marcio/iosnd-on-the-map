@@ -133,6 +133,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="IMS-Z5-nSm"/>
+                    <connections>
+                        <outlet property="studentLocationsTableView" destination="Ryr-2h-tDo" id="ups-70-7Uu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wd-kD-7Zu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
