@@ -51,19 +51,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vu8-7U-Sp5">
-                                <rect key="frame" x="20" y="88" width="374" height="725"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Frh-Am-HCB">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Vu8-7U-Sp5" firstAttribute="leading" secondItem="P3F-1m-jJD" secondAttribute="leading" constant="20" id="ACV-md-3QQ"/>
-                            <constraint firstItem="P3F-1m-jJD" firstAttribute="trailing" secondItem="Vu8-7U-Sp5" secondAttribute="trailing" constant="20" id="C9c-46-CXr"/>
-                            <constraint firstItem="Vu8-7U-Sp5" firstAttribute="bottom" secondItem="P3F-1m-jJD" secondAttribute="bottom" id="JaV-yq-tUk"/>
-                            <constraint firstItem="Vu8-7U-Sp5" firstAttribute="top" secondItem="P3F-1m-jJD" secondAttribute="top" id="s6H-oY-tx0"/>
+                            <constraint firstItem="Frh-Am-HCB" firstAttribute="top" secondItem="P3F-1m-jJD" secondAttribute="top" id="6xW-kD-vUG"/>
+                            <constraint firstItem="Frh-Am-HCB" firstAttribute="trailing" secondItem="P3F-1m-jJD" secondAttribute="trailing" id="KBt-Zv-mnN"/>
+                            <constraint firstItem="Frh-Am-HCB" firstAttribute="bottom" secondItem="P3F-1m-jJD" secondAttribute="bottom" id="OlX-UE-enE"/>
+                            <constraint firstItem="Frh-Am-HCB" firstAttribute="leading" secondItem="P3F-1m-jJD" secondAttribute="leading" id="x4U-Ek-OaF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P3F-1m-jJD"/>
                     </view>
@@ -79,7 +76,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="label" destination="Vu8-7U-Sp5" id="MW9-vN-0yO"/>
+                        <outlet property="mapView" destination="Frh-Am-HCB" id="rkR-Od-b9e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwT-vb-I74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -126,7 +123,7 @@
                         <viewLayoutGuide key="safeArea" id="Hak-nd-xdG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location " id="j9C-97-zSW">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ruk-Oc-fQK">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="ruk-Oc-fQK">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fdF-wS-kdA">
                                 <rect key="frame" x="20" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -251,7 +248,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ecO-ca-ckN"/>
+        <segue reference="X5k-cf-B8o"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>
