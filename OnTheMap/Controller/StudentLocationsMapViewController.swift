@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class StudentLocationsMapViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +21,6 @@ class ViewController: UIViewController {
     }
     
     func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
-        print(studentLocations)
+        label.text = studentLocations.description
     }
 }

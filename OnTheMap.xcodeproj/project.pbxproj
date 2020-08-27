@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145A024F5A6490010EC69 /* AppDelegate.swift */; };
 		9CD145A324F5A6490010EC69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145A224F5A6490010EC69 /* SceneDelegate.swift */; };
-		9CD145A524F5A6490010EC69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145A424F5A6490010EC69 /* ViewController.swift */; };
+		9CD145A524F5A6490010EC69 /* StudentLocationsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145A424F5A6490010EC69 /* StudentLocationsMapViewController.swift */; };
 		9CD145A824F5A6490010EC69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145A624F5A6490010EC69 /* Main.storyboard */; };
 		9CD145AA24F5A64F0010EC69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145A924F5A64F0010EC69 /* Assets.xcassets */; };
 		9CD145AD24F5A64F0010EC69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145AB24F5A64F0010EC69 /* LaunchScreen.storyboard */; };
@@ -25,13 +25,14 @@
 		9CD145CC24F5B1170010EC69 /* get-user-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD145C624F5B1170010EC69 /* get-user-data.json */; };
 		9CD145D224F645D90010EC69 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145D124F645D90010EC69 /* StudentLocation.swift */; };
 		9CD145D424F646850010EC69 /* StudentLocationsResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145D324F646850010EC69 /* StudentLocationsResults.swift */; };
+		9CD145D724F7972E0010EC69 /* StudentLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145D624F7972E0010EC69 /* StudentLocationsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9CD1459D24F5A6490010EC69 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD145A024F5A6490010EC69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CD145A224F5A6490010EC69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CD145A424F5A6490010EC69 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9CD145A424F5A6490010EC69 /* StudentLocationsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsMapViewController.swift; sourceTree = "<group>"; };
 		9CD145A724F5A6490010EC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CD145A924F5A64F0010EC69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CD145AC24F5A64F0010EC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +49,8 @@
 		9CD145C624F5B1170010EC69 /* get-user-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "get-user-data.json"; sourceTree = "<group>"; };
 		9CD145D124F645D90010EC69 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		9CD145D324F646850010EC69 /* StudentLocationsResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsResults.swift; sourceTree = "<group>"; };
+		9CD145D524F6511E0010EC69 /* post-session-error.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "post-session-error.json"; sourceTree = "<group>"; };
+		9CD145D624F7972E0010EC69 /* StudentLocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +97,8 @@
 		9CD145B424F5A7000010EC69 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9CD145A424F5A6490010EC69 /* ViewController.swift */,
+				9CD145A424F5A6490010EC69 /* StudentLocationsMapViewController.swift */,
+				9CD145D624F7972E0010EC69 /* StudentLocationsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -151,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				9CD145C324F5B1170010EC69 /* post-session.json */,
+				9CD145D524F6511E0010EC69 /* post-session-error.json */,
 				9CD145C424F5B1170010EC69 /* delete-session.json */,
 				9CD145C624F5B1170010EC69 /* get-user-data.json */,
 			);
@@ -252,8 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CD145A524F5A6490010EC69 /* ViewController.swift in Sources */,
+				9CD145A524F5A6490010EC69 /* StudentLocationsMapViewController.swift in Sources */,
 				9CD145BA24F5AAF10010EC69 /* GatewayFactory.swift in Sources */,
+				9CD145D724F7972E0010EC69 /* StudentLocationsTableViewController.swift in Sources */,
 				9CD145BE24F5AB790010EC69 /* MockGateway.swift in Sources */,
 				9CD145D224F645D90010EC69 /* StudentLocation.swift in Sources */,
 				9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */,
