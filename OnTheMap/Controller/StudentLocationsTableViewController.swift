@@ -39,4 +39,12 @@ class StudentLocationsTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let studentLocationURL = self.studentLocations[indexPath.row].mediaURL
+        let validstudentLocationURL = studentLocationURL.hasPrefix("http") ? studentLocationURL : "http://\(studentLocationURL)"
+        if let mediaURL = URL(string: validstudentLocationURL) {
+            UIApplication.shared.open(mediaURL)
+        }
+    }
 }
