@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */; };
+		9CBE717B24F7EC79007A652A /* InformationPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */; };
 		9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145A024F5A6490010EC69 /* AppDelegate.swift */; };
 		9CD145A324F5A6490010EC69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145A224F5A6490010EC69 /* SceneDelegate.swift */; };
 		9CD145A524F5A6490010EC69 /* StudentLocationsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145A424F5A6490010EC69 /* StudentLocationsMapViewController.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingMapViewController.swift; sourceTree = "<group>"; };
 		9CD1459D24F5A6490010EC69 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD145A024F5A6490010EC69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CD145A224F5A6490010EC69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			children = (
 				9CD145A424F5A6490010EC69 /* StudentLocationsMapViewController.swift */,
 				9CD145D624F7972E0010EC69 /* StudentLocationsTableViewController.swift */,
+				9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */,
+				9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -266,7 +272,9 @@
 				9CD145D424F646850010EC69 /* StudentLocationsResults.swift in Sources */,
 				9CD145C024F5AB9B0010EC69 /* HttpGateway.swift in Sources */,
 				9CD145A324F5A6490010EC69 /* SceneDelegate.swift in Sources */,
+				9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */,
 				9CD145BC24F5AB560010EC69 /* Gateway.swift in Sources */,
+				9CBE717B24F7EC79007A652A /* InformationPostingMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
