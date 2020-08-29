@@ -9,14 +9,20 @@
 import UIKit
 
 class InformationPostingViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var mediaURLTextField: UITextField!
     
     @IBAction func cancelAddLocation(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func findLocation() {
+        self.performSegue(withIdentifier: "showLocationResults", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let mapViewController = segue.destination as! InformationPostingMapViewController
+        mapViewController.location = self.locationTextField.text ?? ""
+        mapViewController.mediaURL = self.mediaURLTextField.text ?? ""
     }
 }

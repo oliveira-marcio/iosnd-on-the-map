@@ -10,10 +10,15 @@ import UIKit
 
 class InformationPostingMapViewController: UIViewController {
 
+    @IBOutlet weak var resultsLabel: UILabel!
+    
+    var location = ""
+    var mediaURL = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.resultsLabel.text = "Results:\n\nLocation: \(location)\nURL: \(mediaURL)"
     }
     
     @IBAction func addLocation(_ sender: Any) {
