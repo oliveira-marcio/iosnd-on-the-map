@@ -76,7 +76,7 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate {
             annotations.append(annotation)
         }
         
-        self.mapView.addAnnotations(annotations)
+        self.mapView.showAnnotations(annotations, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
