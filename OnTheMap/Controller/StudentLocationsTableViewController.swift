@@ -10,7 +10,9 @@ import UIKit
 
 class StudentLocationsTableViewController: UITableViewController {
 
-    @IBOutlet var studentLocationsTableView: UITableView!
+    @IBOutlet weak var studentLocationsTableView: UITableView!
+    
+    let gateway = GatewayFactory.create()
     
     var studentLocations: [StudentLocation]! {
         let object = UIApplication.shared.delegate
@@ -20,6 +22,17 @@ class StudentLocationsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.studentLocationsTableView.reloadData()
+    }
+    
+    @IBAction func getStudentLocations() {
+        gateway.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
+    }
+    
+    func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.studentLocations = studentLocations
         self.studentLocationsTableView.reloadData()
     }
     

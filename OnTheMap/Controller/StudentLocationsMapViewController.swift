@@ -12,6 +12,8 @@ import MapKit
 class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+
+    let gateway = GatewayFactory.create()
     
     var studentLocations: [StudentLocation]! {
         let object = UIApplication.shared.delegate
@@ -23,15 +25,32 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         self.mapView.delegate = self
-
-        let gateway = GatewayFactory.create()
-        gateway.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
-        
+        // self.getStudentLocations()
+        // MARK: TODO For testing purposes. Replace for commented out code above later
+        self.handleStudentLocationsResponse(
+            studentLocations: [
+                StudentLocation(
+                    createdAt: "2015-02-25T01:10:38.103Z",
+                    firstName: "Jarrod",
+                    lastName: "Parkes",
+                    latitude: 34.7303688,
+                    longitude: -86.5861037,
+                    mapString: "Huntsville, Alabama ",
+                    mediaURL: "https://www.linkedin.com/in/jarrodparkes",
+                    objectId: "JhOtcRkxsh", uniqueKey: "996618664",
+                    updatedAt: "2015-03-09T22:04:50.315Z"
+                )
+            ],
+            error: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadMapAnnotations()
+    }
+    
+    @IBAction func getStudentLocations() {
+        gateway.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
     func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {

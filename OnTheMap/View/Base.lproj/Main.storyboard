@@ -72,7 +72,11 @@
                                     <segue destination="cK3-K1-PdM" kind="presentation" modalPresentationStyle="fullScreen" id="X5k-cf-B8o"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="icon_refresh" id="boR-Ak-0T7"/>
+                            <barButtonItem image="icon_refresh" id="boR-Ak-0T7">
+                                <connections>
+                                    <action selector="getStudentLocations" destination="Fpq-E3-fav" id="1s9-pa-m53"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -206,7 +210,11 @@
                                     <segue destination="cK3-K1-PdM" kind="presentation" modalPresentationStyle="fullScreen" id="ecO-ca-ckN"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="icon_refresh" id="ML7-XE-SdM"/>
+                            <barButtonItem image="icon_refresh" id="ML7-XE-SdM">
+                                <connections>
+                                    <action selector="getStudentLocations" destination="Rxk-oa-kao" id="Bst-Pm-J3P"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -248,7 +256,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="X5k-cf-B8o"/>
+        <segue reference="ecO-ca-ckN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>
