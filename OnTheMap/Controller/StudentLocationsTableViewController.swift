@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentLocationsTableViewController: UITableViewController {
+class StudentLocationsTableViewController: UITableViewController, AddLocationDelegate {
 
     @IBOutlet weak var studentLocationsTableView: UITableView!
     
@@ -59,5 +59,19 @@ class StudentLocationsTableViewController: UITableViewController {
         if let mediaURL = URL(string: validstudentLocationURL) {
             UIApplication.shared.open(mediaURL)
         }
+    }
+    
+    @IBAction func addLocation(_ sender: Any) {
+        performSegue(withIdentifier: "showAddLocation", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let targetController = segue.destination as! UINavigationController
+        let informationPostingVC = targetController.topViewController as! InformationPostingViewController
+        informationPostingVC.addLocationDelegate = self
+    }
+    
+    func onLocationAdded() {
+        self.getStudentLocations()
     }
 }

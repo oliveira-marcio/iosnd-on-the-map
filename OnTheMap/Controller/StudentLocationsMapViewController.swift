@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate {
+class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, AddLocationDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
 
@@ -106,5 +106,19 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate {
                 UIApplication.shared.open(mediaURL)
             }
         }
+    }
+    
+    @IBAction func addLocation(_ sender: Any) {
+        performSegue(withIdentifier: "showAddLocation", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let targetController = segue.destination as! UINavigationController
+        let informationPostingVC = targetController.topViewController as! InformationPostingViewController
+        informationPostingVC.addLocationDelegate = self
+    }
+    
+    func onLocationAdded() {
+        self.getStudentLocations()
     }
 }

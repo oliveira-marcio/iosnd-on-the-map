@@ -69,7 +69,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" id="Saz-bV-3MK">
                                 <connections>
-                                    <segue destination="cK3-K1-PdM" kind="presentation" modalPresentationStyle="fullScreen" id="X5k-cf-B8o"/>
+                                    <action selector="addLocation:" destination="Fpq-E3-fav" id="6Ny-Dp-vgz"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="icon_refresh" id="boR-Ak-0T7">
@@ -81,6 +81,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Frh-Am-HCB" id="rkR-Od-b9e"/>
+                        <segue destination="cK3-K1-PdM" kind="presentation" identifier="showAddLocation" modalPresentationStyle="fullScreen" id="iA4-5m-Yxf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwT-vb-I74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -228,7 +229,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" id="QSB-BM-O6b">
                                 <connections>
-                                    <segue destination="cK3-K1-PdM" kind="presentation" modalPresentationStyle="fullScreen" id="ecO-ca-ckN"/>
+                                    <action selector="addLocation:" destination="Rxk-oa-kao" id="7Fl-NW-jr5"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="icon_refresh" id="ML7-XE-SdM">
@@ -240,6 +241,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="studentLocationsTableView" destination="Ryr-2h-tDo" id="ups-70-7Uu"/>
+                        <segue destination="cK3-K1-PdM" kind="presentation" identifier="showAddLocation" modalPresentationStyle="fullScreen" id="9CV-ec-ouE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wd-kD-7Zu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -287,7 +289,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ecO-ca-ckN"/>
+        <segue reference="9CV-ec-ouE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>

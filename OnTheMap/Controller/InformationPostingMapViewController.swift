@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+protocol AddLocationDelegate {
+    func onLocationAdded()
+}
+
 class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -17,6 +21,8 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
     var latitude = 0.0
     var longitude = 0.0
     var mediaURL = ""
+    
+    var addLocationDelegate: AddLocationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +63,8 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func addLocation(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.addLocationDelegate?.onLocationAdded()
+        }
     }
 }

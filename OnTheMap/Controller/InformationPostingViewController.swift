@@ -18,6 +18,8 @@ class InformationPostingViewController: UIViewController {
     var latitude: Double?
     var longitude: Double?
     
+    var addLocationDelegate: AddLocationDelegate?
+    
     @IBAction func cancelAddLocation(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -61,5 +63,6 @@ class InformationPostingViewController: UIViewController {
         mapViewController.latitude = self.latitude!
         mapViewController.longitude = self.longitude!
         mapViewController.mediaURL = self.mediaURLTextField.text ?? ""
+        mapViewController.addLocationDelegate = self.addLocationDelegate
     }
 }
