@@ -29,5 +29,33 @@ struct MockGateway: Gateway {
             completion([], nil)
             print("File error: \(error)")
         }
-    }    
+    }
+    
+    func addStudentLocation(latitude: Double, longitude: Double, searchString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
+        guard let path = Bundle.main.path(forResource: "post-student-location", ofType: "json") else {
+            completion(false, nil)
+            return
+        }
+
+        print("latitude: \(latitude)")
+        print("longitude: \(longitude)")
+        print("searchString: \(searchString)")
+        print("mediaURL: \(mediaURL)")
+
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            do {
+                let decoder = JSONDecoder()
+                let responseObject = try decoder.decode(AddStudentLocationResponse.self, from: data)
+                print("objectId: \(responseObject.objectId)")
+                completion(true, nil)
+            } catch let error {
+                completion(false, nil)
+                print("Parse error: \(error)")
+            }
+        } catch let error {
+            completion(false, nil)
+            print("File error: \(error)")
+        }
+    }
 }

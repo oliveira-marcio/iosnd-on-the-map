@@ -69,8 +69,29 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func addLocation(_ sender: Any) {
-        self.dismiss(animated: true) {
-            self.addLocationDelegate?.onLocationAdded()
+        let gateway = GatewayFactory.create()
+        gateway.addStudentLocation(
+            latitude: self.latitude,
+            longitude: self.longitude,
+            searchString: self.searchString,
+            mediaURL: self.mediaURL,
+            completion: handleAddLocationResponse(success:error:)
+        )
+    }
+    
+    func handleAddLocationResponse(success: Bool, error: Error?) {
+        if success {
+            self.dismiss(animated: true) {
+                self.addLocationDelegate?.onLocationAdded()
+            }
+        } else {
+            showAddLocationFailure(message: "Something wrong happened. Please try again.")
         }
+    }
+    
+    func showAddLocationFailure(message: String) {
+        let alert = UIAlertController(title: "Add Location Failed", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

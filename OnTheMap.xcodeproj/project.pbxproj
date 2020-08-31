@@ -28,6 +28,7 @@
 		9CD145D224F645D90010EC69 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145D124F645D90010EC69 /* StudentLocation.swift */; };
 		9CD145D424F646850010EC69 /* StudentLocationsResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145D324F646850010EC69 /* StudentLocationsResults.swift */; };
 		9CD145D724F7972E0010EC69 /* StudentLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145D624F7972E0010EC69 /* StudentLocationsTableViewController.swift */; };
+		9CF321E924FD830B00110697 /* AddStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF321E824FD830B00110697 /* AddStudentLocationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		9CD145D324F646850010EC69 /* StudentLocationsResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsResults.swift; sourceTree = "<group>"; };
 		9CD145D524F6511E0010EC69 /* post-session-error.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "post-session-error.json"; sourceTree = "<group>"; };
 		9CD145D624F7972E0010EC69 /* StudentLocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsTableViewController.swift; sourceTree = "<group>"; };
+		9CF321E824FD830B00110697 /* AddStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentLocationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				9CD145D124F645D90010EC69 /* StudentLocation.swift */,
 				9CD145D324F646850010EC69 /* StudentLocationsResults.swift */,
+				9CF321E824FD830B00110697 /* AddStudentLocationResponse.swift */,
 			);
 			path = ParseResponses;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */,
 				9CD145D424F646850010EC69 /* StudentLocationsResults.swift in Sources */,
 				9CD145C024F5AB9B0010EC69 /* HttpGateway.swift in Sources */,
+				9CF321E924FD830B00110697 /* AddStudentLocationResponse.swift in Sources */,
 				9CD145A324F5A6490010EC69 /* SceneDelegate.swift in Sources */,
 				9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */,
 				9CD145BC24F5AB560010EC69 /* Gateway.swift in Sources */,
