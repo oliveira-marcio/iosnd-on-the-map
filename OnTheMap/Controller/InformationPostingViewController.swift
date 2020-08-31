@@ -13,6 +13,8 @@ class InformationPostingViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mediaURLTextField: UITextField!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var findLocationButton: UIButton!
     
     var searchString: String?
     var latitude: Double?
@@ -31,11 +33,14 @@ class InformationPostingViewController: UIViewController {
         }
         
         self.searchString = searchString
+        self.setGeocoding(true)
         
         CLGeocoder().geocodeAddressString(searchString, completionHandler: handleGeocodeResponse(placemarks:error:))
     }
     
     func handleGeocodeResponse(placemarks: [CLPlacemark]?, error: Error?) {
+        self.setGeocoding(false)
+        
         if let placemark = placemarks?.first {
             if let location = placemark.location {
                 self.latitude = location.coordinate.latitude
@@ -51,9 +56,16 @@ class InformationPostingViewController: UIViewController {
         }
     }
     
+    func setGeocoding(_ geocoding: Bool) {
+        self.searchTextField.isEnabled = !geocoding
+        self.mediaURLTextField.isEnabled = !geocoding
+        self.findLocationButton.isEnabled = !geocoding
+        geocoding ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
+    }
+    
     func showGeocodeFailure(message: String) {
         let alert = UIAlertController(title: "Find Location Failed", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.setGeocoding(false)}))
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -129,12 +129,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="8CT-CB-o54">
+                                <rect key="frame" x="197" y="558" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5f5-Ev-3C0" firstAttribute="centerY" secondItem="Hak-nd-xdG" secondAttribute="centerY" id="0bZ-VN-pZa"/>
                             <constraint firstItem="5f5-Ev-3C0" firstAttribute="trailing" secondItem="1gO-9K-0Yi" secondAttribute="trailing" id="9SY-rW-YCx"/>
                             <constraint firstItem="1gO-9K-0Yi" firstAttribute="leading" secondItem="5f5-Ev-3C0" secondAttribute="leading" id="FZy-4j-CPH"/>
+                            <constraint firstItem="8CT-CB-o54" firstAttribute="centerX" secondItem="Hak-nd-xdG" secondAttribute="centerX" id="HvQ-8C-dkY"/>
+                            <constraint firstItem="8CT-CB-o54" firstAttribute="top" secondItem="1gO-9K-0Yi" secondAttribute="bottom" constant="16" id="Jjx-cn-Bjq"/>
                             <constraint firstItem="6P9-md-aE5" firstAttribute="bottom" secondItem="Hak-nd-xdG" secondAttribute="bottom" id="RXH-Am-HdZ"/>
                             <constraint firstItem="1gO-9K-0Yi" firstAttribute="top" secondItem="5f5-Ev-3C0" secondAttribute="bottom" constant="16" id="Zt6-ed-hmu"/>
                             <constraint firstItem="Hak-nd-xdG" firstAttribute="trailing" secondItem="5f5-Ev-3C0" secondAttribute="trailing" constant="32" id="aDw-er-fvG"/>
@@ -159,6 +164,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="8CT-CB-o54" id="m83-D2-a65"/>
+                        <outlet property="findLocationButton" destination="6P9-md-aE5" id="2pW-IX-SHn"/>
                         <outlet property="mediaURLTextField" destination="1gO-9K-0Yi" id="fOz-xE-5Qb"/>
                         <outlet property="searchTextField" destination="5f5-Ev-3C0" id="fPF-KJ-5V8"/>
                         <segue destination="1re-6m-DMf" kind="show" identifier="showLocationResults" id="ctE-C1-cdg"/>
