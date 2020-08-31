@@ -14,12 +14,6 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     
     let gateway = GatewayFactory.create()
     
-    var studentLocations: [StudentLocation]! {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.studentLocations
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.studentLocationsTableView.reloadData()
@@ -30,21 +24,19 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     }
     
     func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.studentLocations = studentLocations
+        LocationModel.studentLocations = studentLocations
         self.studentLocationsTableView.reloadData()
     }
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.studentLocations.count
+        return LocationModel.studentLocations.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentLocationTableViewCell", for: indexPath)
-        let studentLocation = self.studentLocations[indexPath.row]
+        let studentLocation = LocationModel.studentLocations[indexPath.row]
         
         cell.imageView?.image = UIImage(named: "icon_pin")
         cell.textLabel?.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
@@ -54,7 +46,7 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let studentLocationURL = self.studentLocations[indexPath.row].mediaURL
+        let studentLocationURL = LocationModel.studentLocations[indexPath.row].mediaURL
         let validstudentLocationURL = studentLocationURL.hasPrefix("http") ? studentLocationURL : "http://\(studentLocationURL)"
         if let mediaURL = URL(string: validstudentLocationURL) {
             UIApplication.shared.open(mediaURL)
@@ -62,6 +54,7 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     }
     
     @IBAction func addLocation(_ sender: Any) {
+        print("objectId: \(LocationModel.currentObjectId)")
         performSegue(withIdentifier: "showAddLocation", sender: sender)
     }
     

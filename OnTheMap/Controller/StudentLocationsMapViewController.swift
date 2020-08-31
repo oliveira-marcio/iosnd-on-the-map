@@ -15,12 +15,6 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
 
     let gateway = GatewayFactory.create()
     
-    var studentLocations: [StudentLocation]! {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.studentLocations
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,16 +48,14 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
     }
     
     func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.studentLocations = studentLocations
+        LocationModel.studentLocations = studentLocations
         self.loadMapAnnotations()
     }
     
     func loadMapAnnotations() {
         var annotations = [MKPointAnnotation]()
         
-        for studentLocation in self.studentLocations {
+        for studentLocation in LocationModel.studentLocations {
             let lat = CLLocationDegrees(studentLocation.latitude)
             let long = CLLocationDegrees(studentLocation.longitude)
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -109,6 +101,7 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
     }
     
     @IBAction func addLocation(_ sender: Any) {
+        print("objectId: \(LocationModel.currentObjectId)")
         performSegue(withIdentifier: "showAddLocation", sender: sender)
     }
     

@@ -47,6 +47,7 @@ struct MockGateway: Gateway {
             do {
                 let decoder = JSONDecoder()
                 let responseObject = try decoder.decode(AddStudentLocationResponse.self, from: data)
+                LocationModel.currentObjectId = responseObject.objectId
                 print("objectId: \(responseObject.objectId)")
                 completion(true, nil)
             } catch let error {
