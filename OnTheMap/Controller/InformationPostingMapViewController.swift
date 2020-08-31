@@ -17,7 +17,8 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var location = ""
+    var searchString = ""
+    var country = ""
     var latitude = 0.0
     var longitude = 0.0
     var mediaURL = ""
@@ -34,7 +35,12 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
     func loadMapResults() {
         let annotation = MKPointAnnotation()
         
-        annotation.title = self.location
+        var title = self.searchString
+        if !country.isEmpty {
+            title += ", \(country)"
+        }
+        
+        annotation.title = title
         annotation.coordinate = CLLocationCoordinate2D(
             latitude: CLLocationDegrees(self.latitude),
             longitude: CLLocationDegrees(self.longitude)

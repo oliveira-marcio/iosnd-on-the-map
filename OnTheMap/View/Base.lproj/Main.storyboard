@@ -159,8 +159,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="locationTextField" destination="5f5-Ev-3C0" id="fPF-KJ-5V8"/>
                         <outlet property="mediaURLTextField" destination="1gO-9K-0Yi" id="fOz-xE-5Qb"/>
+                        <outlet property="searchTextField" destination="5f5-Ev-3C0" id="fPF-KJ-5V8"/>
                         <segue destination="1re-6m-DMf" kind="show" identifier="showLocationResults" id="ctE-C1-cdg"/>
                     </connections>
                 </viewController>

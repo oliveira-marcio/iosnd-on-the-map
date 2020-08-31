@@ -11,12 +11,13 @@ import CoreLocation
 
 class InformationPostingViewController: UIViewController {
     
-    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mediaURLTextField: UITextField!
     
-    var location: String?
+    var searchString: String?
     var latitude: Double?
     var longitude: Double?
+    var country: String?
     
     var addLocationDelegate: AddLocationDelegate?
     
@@ -25,30 +26,29 @@ class InformationPostingViewController: UIViewController {
     }
     
     @IBAction func findLocation() {
-        guard let address = self.locationTextField.text, !address.isEmpty else {
+        guard let searchString = self.searchTextField.text, !searchString.isEmpty else {
             return
         }
         
-        CLGeocoder().geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
-            if let placemark = placemarks?.first {
-                if let location = placemark.location {
-                    self.latitude = location.coordinate.latitude
-                    self.longitude = location.coordinate.longitude
-                    
-                    if let country = placemark.country {
-                        self.location = "\(address), \(country)"
-                    } else {
-                        self.location = address
-                    }
-                    
-                    self.performSegue(withIdentifier: "showLocationResults", sender: nil)
-                } else {
-                    self.showGeocodeFailure(message: "Couldn't fetch location coordinates. Please try again.")
-                }
+        self.searchString = searchString
+        
+        CLGeocoder().geocodeAddressString(searchString, completionHandler: handleGeocodeResponse(placemarks:error:))
+    }
+    
+    func handleGeocodeResponse(placemarks: [CLPlacemark]?, error: Error?) {
+        if let placemark = placemarks?.first {
+            if let location = placemark.location {
+                self.latitude = location.coordinate.latitude
+                self.longitude = location.coordinate.longitude
+                self.country = placemark.country
+                
+                self.performSegue(withIdentifier: "showLocationResults", sender: nil)
             } else {
-                self.showGeocodeFailure(message: "Couldn't find a location with provided address. Please try again.")
+                self.showGeocodeFailure(message: "Couldn't fetch location coordinates. Please try again.")
             }
-        })
+        } else {
+            self.showGeocodeFailure(message: "Couldn't find a location with provided address. Please try again.")
+        }
     }
     
     func showGeocodeFailure(message: String) {
@@ -59,7 +59,8 @@ class InformationPostingViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let mapViewController = segue.destination as! InformationPostingMapViewController
-        mapViewController.location = self.location!
+        mapViewController.searchString = self.searchString!
+        mapViewController.country = self.country!
         mapViewController.latitude = self.latitude!
         mapViewController.longitude = self.longitude!
         mapViewController.mediaURL = self.mediaURLTextField.text ?? ""
