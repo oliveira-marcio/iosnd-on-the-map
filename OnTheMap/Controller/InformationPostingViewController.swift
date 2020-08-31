@@ -23,6 +23,8 @@ class InformationPostingViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let mapViewController = segue.destination as! InformationPostingMapViewController
         mapViewController.location = self.locationTextField.text ?? ""
+        mapViewController.latitude = 40.6892574
+        mapViewController.longitude = -74.0446083
         mapViewController.mediaURL = self.mediaURLTextField.text ?? ""
     }
 }

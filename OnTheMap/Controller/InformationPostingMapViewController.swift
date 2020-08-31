@@ -7,18 +7,53 @@
 //
 
 import UIKit
+import MapKit
 
-class InformationPostingMapViewController: UIViewController {
+class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
 
-    @IBOutlet weak var resultsLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     var location = ""
+    var latitude = 0.0
+    var longitude = 0.0
     var mediaURL = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.mapView.delegate = self
+        self.loadMapResults()
+    }
+    
+    func loadMapResults() {
+        let annotation = MKPointAnnotation()
+        
+        annotation.title = self.location
+        annotation.coordinate = CLLocationCoordinate2D(
+            latitude: CLLocationDegrees(self.latitude),
+            longitude: CLLocationDegrees(self.longitude)
+        )
+        
+        self.mapView.showAnnotations([annotation], animated: true)
+        self.mapView.selectAnnotation(annotation, animated: false)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
 
-        self.resultsLabel.text = "Results:\n\nLocation: \(location)\nURL: \(mediaURL)"
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
     }
     
     @IBAction func addLocation(_ sender: Any) {
