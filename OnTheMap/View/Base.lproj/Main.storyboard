@@ -280,6 +280,9 @@
                                     <action selector="addLocation:" destination="1re-6m-DMf" eventType="touchUpInside" id="gR8-2l-LA1"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="qdj-Hx-79m">
+                                <rect key="frame" x="354" y="817" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -288,13 +291,17 @@
                             <constraint firstItem="tKg-6H-YvO" firstAttribute="leading" secondItem="yrw-hO-q7x" secondAttribute="leading" id="J1m-LB-m6J"/>
                             <constraint firstItem="wEg-30-iv9" firstAttribute="leading" secondItem="yrw-hO-q7x" secondAttribute="leading" constant="20" id="KML-R7-Vei"/>
                             <constraint firstItem="tKg-6H-YvO" firstAttribute="trailing" secondItem="yrw-hO-q7x" secondAttribute="trailing" id="dDt-Ln-yNA"/>
+                            <constraint firstItem="wEg-30-iv9" firstAttribute="trailing" secondItem="qdj-Hx-79m" secondAttribute="trailing" constant="20" id="mfF-Of-EhQ"/>
                             <constraint firstItem="wEg-30-iv9" firstAttribute="bottom" secondItem="yrw-hO-q7x" secondAttribute="bottom" constant="-20" id="t3B-ta-Y9H"/>
+                            <constraint firstItem="qdj-Hx-79m" firstAttribute="centerY" secondItem="wEg-30-iv9" secondAttribute="centerY" id="uyv-gq-OP8"/>
                             <constraint firstItem="tKg-6H-YvO" firstAttribute="top" secondItem="yrw-hO-q7x" secondAttribute="top" id="wjD-jf-Fxn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yrw-hO-q7x"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location " id="YYG-Qa-0mW"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="qdj-Hx-79m" id="ZYT-NG-iyB"/>
+                        <outlet property="finishButton" destination="wEg-30-iv9" id="siu-M7-iSd"/>
                         <outlet property="mapView" destination="tKg-6H-YvO" id="is2-TF-tNv"/>
                     </connections>
                 </viewController>

@@ -16,6 +16,8 @@ protocol AddLocationDelegate {
 class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var finishButton: CustomButton!
     
     var searchString = ""
     var country = ""
@@ -69,6 +71,7 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func addLocation(_ sender: Any) {
+        self.setAddingLocation(true)
         if LocationModel.currentObjectId.isEmpty {
             GatewayFactory.shared.addStudentLocation(
                 latitude: self.latitude,
@@ -97,11 +100,18 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
         } else {
             showAddLocationFailure(message: "Something wrong happened. Please try again.")
         }
+        
+        self.setAddingLocation(false)
     }
     
     func showAddLocationFailure(message: String) {
         let alert = UIAlertController(title: "Add Location Failed", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setAddingLocation(_ addingLocation: Bool) {
+        self.finishButton.isEnabled = !addingLocation
+        addingLocation ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
     }
 }

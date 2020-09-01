@@ -39,8 +39,6 @@ class InformationPostingViewController: UIViewController {
     }
     
     func handleGeocodeResponse(placemarks: [CLPlacemark]?, error: Error?) {
-        self.setGeocoding(false)
-        
         if let placemark = placemarks?.first {
             if let location = placemark.location {
                 self.latitude = location.coordinate.latitude
@@ -54,6 +52,8 @@ class InformationPostingViewController: UIViewController {
         } else {
             self.showGeocodeFailure(message: "Couldn't find a location with provided address. Please try again.")
         }
+        
+        self.setGeocoding(false)
     }
     
     func setGeocoding(_ geocoding: Bool) {
@@ -65,7 +65,7 @@ class InformationPostingViewController: UIViewController {
     
     func showGeocodeFailure(message: String) {
         let alert = UIAlertController(title: "Find Location Failed", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.setGeocoding(false)}))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
