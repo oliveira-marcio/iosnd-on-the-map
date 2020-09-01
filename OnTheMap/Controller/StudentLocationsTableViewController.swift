@@ -54,8 +54,14 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     }
     
     @IBAction func addLocation(_ sender: Any) {
-        print("objectId: \(LocationModel.currentObjectId)")
-        performSegue(withIdentifier: "showAddLocation", sender: sender)
+        if LocationModel.currentObjectId.isEmpty {
+            performSegue(withIdentifier: "showAddLocation", sender: sender)
+        } else {
+            let alert = UIAlertController(title: "Attention", message: "You have already posted a student location. Would you like to overwrite current location?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Overwrite", style: .default, handler: { _ in self.performSegue(withIdentifier: "showAddLocation", sender: sender) }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
