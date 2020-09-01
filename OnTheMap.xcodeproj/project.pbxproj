@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C66866724FEC154002FB559 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66866624FEC154002FB559 /* LoginViewController.swift */; };
 		9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */; };
 		9CBE717B24F7EC79007A652A /* InformationPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */; };
 		9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD145A024F5A6490010EC69 /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C66866624FEC154002FB559 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 		9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingMapViewController.swift; sourceTree = "<group>"; };
 		9CD1459D24F5A6490010EC69 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 		9CD145B424F5A7000010EC69 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C66866624FEC154002FB559 /* LoginViewController.swift */,
 				9CD145A424F5A6490010EC69 /* StudentLocationsMapViewController.swift */,
 				9CD145D624F7972E0010EC69 /* StudentLocationsTableViewController.swift */,
 				9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */,
@@ -296,6 +299,7 @@
 				9CD145A324F5A6490010EC69 /* SceneDelegate.swift in Sources */,
 				9CF321EE24FE368600110697 /* UpdateStudentLocationResponse.swift in Sources */,
 				9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */,
+				9C66866724FEC154002FB559 /* LoginViewController.swift in Sources */,
 				9CD145BC24F5AB560010EC69 /* Gateway.swift in Sources */,
 				9CBE717B24F7EC79007A652A /* InformationPostingMapViewController.swift in Sources */,
 				9CF321EC24FD8E5F00110697 /* Models.swift in Sources */,

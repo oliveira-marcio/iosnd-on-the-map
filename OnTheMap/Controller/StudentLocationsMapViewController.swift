@@ -118,4 +118,8 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
     func onLocationAdded() {
         self.getStudentLocations()
     }
+    
+    @IBAction func logout(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

@@ -71,4 +71,8 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     func onLocationAdded() {
         self.getStudentLocations()
     }
+    
+    @IBAction func logout(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
