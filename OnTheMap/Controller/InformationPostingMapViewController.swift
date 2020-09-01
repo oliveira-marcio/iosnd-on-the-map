@@ -69,10 +69,8 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func addLocation(_ sender: Any) {
-        let gateway = GatewayFactory.create()
-        
         if LocationModel.currentObjectId.isEmpty {
-            gateway.addStudentLocation(
+            GatewayFactory.shared.addStudentLocation(
                 latitude: self.latitude,
                 longitude: self.longitude,
                 searchString: self.searchString,
@@ -80,7 +78,7 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
                 completion: handleAddLocationResponse(success:error:)
             )
         } else {
-            gateway.updateStudentLocation(
+            GatewayFactory.shared.updateStudentLocation(
                 objectId: LocationModel.currentObjectId,
                 latitude: self.latitude,
                 longitude: self.longitude,

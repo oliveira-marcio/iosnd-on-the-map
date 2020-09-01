@@ -12,15 +12,13 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
 
     @IBOutlet weak var studentLocationsTableView: UITableView!
     
-    let gateway = GatewayFactory.create()
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.studentLocationsTableView.reloadData()
     }
     
     @IBAction func getStudentLocations() {
-        gateway.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
+        GatewayFactory.shared.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
     func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {

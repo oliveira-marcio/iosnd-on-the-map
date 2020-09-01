@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  StudentLocationsMapViewController.swift
 //  OnTheMap
 //
 //  Created by Márcio Oliveira on 8/25/20.
@@ -13,8 +13,6 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
 
     @IBOutlet weak var mapView: MKMapView!
 
-    let gateway = GatewayFactory.create()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +42,7 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
     }
     
     @IBAction func getStudentLocations() {
-        gateway.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
+        GatewayFactory.shared.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
     func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {

@@ -1,5 +1,5 @@
 //
-//  APIFactory.swift
+//  GatewayFactory.swift
 //  OnTheMap
 //
 //  Created by Márcio Oliveira on 8/25/20.
@@ -9,7 +9,7 @@
 import Foundation
 
 class GatewayFactory {
-    class func create() -> Gateway {
-        return CommandLine.arguments.contains("--mockAPI") ? MockGateway() : HttpGateway()
-    }
+    static let shared: Gateway = CommandLine.arguments.contains("--mockAPI") ? MockGateway() : HttpGateway()
+    
+    private init() {}
 }

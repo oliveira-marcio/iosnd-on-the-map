@@ -1,5 +1,5 @@
 //
-//  StudentLocationsResponse.swift
+//  AddStudentLocationResponse.swift
 //  OnTheMap
 //
 //  Created by Márcio Oliveira on 8/26/20.
