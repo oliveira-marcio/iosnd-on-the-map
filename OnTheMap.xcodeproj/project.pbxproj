@@ -31,6 +31,7 @@
 		9CF321E924FD830B00110697 /* AddStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF321E824FD830B00110697 /* AddStudentLocationResponse.swift */; };
 		9CF321EC24FD8E5F00110697 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF321EB24FD8E5F00110697 /* Models.swift */; };
 		9CF321EE24FE368600110697 /* UpdateStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF321ED24FE368500110697 /* UpdateStudentLocationResponse.swift */; };
+		9CF321F024FE480700110697 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF321EF24FE480700110697 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		9CF321E824FD830B00110697 /* AddStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentLocationResponse.swift; sourceTree = "<group>"; };
 		9CF321EB24FD8E5F00110697 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		9CF321ED24FE368500110697 /* UpdateStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStudentLocationResponse.swift; sourceTree = "<group>"; };
+		9CF321EF24FE480700110697 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				9CD145A624F5A6490010EC69 /* Main.storyboard */,
 				9CD145AB24F5A64F0010EC69 /* LaunchScreen.storyboard */,
+				9CF321EF24FE480700110697 /* CustomButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				9CD145BA24F5AAF10010EC69 /* GatewayFactory.swift in Sources */,
 				9CD145D724F7972E0010EC69 /* StudentLocationsTableViewController.swift in Sources */,
 				9CD145BE24F5AB790010EC69 /* MockGateway.swift in Sources */,
+				9CF321F024FE480700110697 /* CustomButton.swift in Sources */,
 				9CD145D224F645D90010EC69 /* StudentLocation.swift in Sources */,
 				9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */,
 				9CD145D424F646850010EC69 /* StudentLocationsResults.swift in Sources */,

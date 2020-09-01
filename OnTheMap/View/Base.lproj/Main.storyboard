@@ -112,39 +112,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6P9-md-aE5">
-                                <rect key="frame" x="161" y="832" width="92" height="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-rg-HLd">
+                                <rect key="frame" x="181" y="108" width="52" height="67"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5f5-Ev-3C0">
+                                <rect key="frame" x="32" y="223" width="350" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type media URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gO-9K-0Yi">
+                                <rect key="frame" x="32" y="273" width="350" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6P9-md-aE5" customClass="CustomButton" customModule="OnTheMap" customModuleProvider="target">
+                                <rect key="frame" x="32" y="355" width="350" height="30"/>
                                 <state key="normal" title="Find Location"/>
                                 <connections>
                                     <action selector="findLocation" destination="18I-lP-68Q" eventType="touchUpInside" id="HoF-5f-9EZ"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5f5-Ev-3C0">
-                                <rect key="frame" x="32" y="458" width="350" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type media URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gO-9K-0Yi">
-                                <rect key="frame" x="32" y="508" width="350" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="8CT-CB-o54">
-                                <rect key="frame" x="197" y="558" width="20" height="20"/>
+                                <rect key="frame" x="197" y="401" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="5f5-Ev-3C0" firstAttribute="centerY" secondItem="Hak-nd-xdG" secondAttribute="centerY" id="0bZ-VN-pZa"/>
+                            <constraint firstItem="5f5-Ev-3C0" firstAttribute="top" secondItem="Maf-rg-HLd" secondAttribute="bottom" constant="48" id="0bZ-VN-pZa"/>
+                            <constraint firstItem="6P9-md-aE5" firstAttribute="top" secondItem="1gO-9K-0Yi" secondAttribute="bottom" constant="48" id="7PP-2W-Grr"/>
                             <constraint firstItem="5f5-Ev-3C0" firstAttribute="trailing" secondItem="1gO-9K-0Yi" secondAttribute="trailing" id="9SY-rW-YCx"/>
+                            <constraint firstItem="Hak-nd-xdG" firstAttribute="trailing" secondItem="6P9-md-aE5" secondAttribute="trailing" constant="32" id="C9Z-WJ-uFK"/>
                             <constraint firstItem="1gO-9K-0Yi" firstAttribute="leading" secondItem="5f5-Ev-3C0" secondAttribute="leading" id="FZy-4j-CPH"/>
                             <constraint firstItem="8CT-CB-o54" firstAttribute="centerX" secondItem="Hak-nd-xdG" secondAttribute="centerX" id="HvQ-8C-dkY"/>
-                            <constraint firstItem="8CT-CB-o54" firstAttribute="top" secondItem="1gO-9K-0Yi" secondAttribute="bottom" constant="16" id="Jjx-cn-Bjq"/>
-                            <constraint firstItem="6P9-md-aE5" firstAttribute="bottom" secondItem="Hak-nd-xdG" secondAttribute="bottom" id="RXH-Am-HdZ"/>
+                            <constraint firstItem="8CT-CB-o54" firstAttribute="top" secondItem="6P9-md-aE5" secondAttribute="bottom" constant="16" id="Jjx-cn-Bjq"/>
+                            <constraint firstItem="Maf-rg-HLd" firstAttribute="top" secondItem="Hak-nd-xdG" secondAttribute="top" constant="20" id="KAr-DW-XqR"/>
+                            <constraint firstItem="Maf-rg-HLd" firstAttribute="centerX" secondItem="Hak-nd-xdG" secondAttribute="centerX" id="Z09-D3-m0D"/>
                             <constraint firstItem="1gO-9K-0Yi" firstAttribute="top" secondItem="5f5-Ev-3C0" secondAttribute="bottom" constant="16" id="Zt6-ed-hmu"/>
                             <constraint firstItem="Hak-nd-xdG" firstAttribute="trailing" secondItem="5f5-Ev-3C0" secondAttribute="trailing" constant="32" id="aDw-er-fvG"/>
-                            <constraint firstItem="6P9-md-aE5" firstAttribute="centerX" secondItem="Hak-nd-xdG" secondAttribute="centerX" id="jVF-Od-eK1"/>
+                            <constraint firstItem="Maf-rg-HLd" firstAttribute="top" secondItem="Hak-nd-xdG" secondAttribute="top" constant="20" id="gzU-Ym-aVh"/>
                             <constraint firstItem="5f5-Ev-3C0" firstAttribute="leading" secondItem="Hak-nd-xdG" secondAttribute="leading" constant="32" id="kdv-bT-dhL"/>
+                            <constraint firstItem="6P9-md-aE5" firstAttribute="leading" secondItem="Hak-nd-xdG" secondAttribute="leading" constant="32" id="nmh-Dj-cEf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hak-nd-xdG"/>
                     </view>
@@ -173,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zev-Ky-b5L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4070" y="98"/>
+            <point key="canvasLocation" x="4069.5652173913045" y="97.767857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lqs-W6-Mmr">
@@ -255,7 +262,7 @@
             </objects>
             <point key="canvasLocation" x="2422" y="439"/>
         </scene>
-        <!--Information Posting Map View Controller-->
+        <!--Add Location -->
         <scene sceneID="Mcf-vV-Ozv">
             <objects>
                 <viewController id="1re-6m-DMf" customClass="InformationPostingMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -266,8 +273,8 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tKg-6H-YvO">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEg-30-iv9">
-                                <rect key="frame" x="186.5" y="832" width="41" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEg-30-iv9" customClass="CustomButton" customModule="OnTheMap" customModuleProvider="target">
+                                <rect key="frame" x="20" y="812" width="374" height="30"/>
                                 <state key="normal" title="Finish"/>
                                 <connections>
                                     <action selector="addLocation:" destination="1re-6m-DMf" eventType="touchUpInside" id="gR8-2l-LA1"/>
@@ -277,15 +284,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="tKg-6H-YvO" firstAttribute="bottom" secondItem="yrw-hO-q7x" secondAttribute="bottom" id="1ow-KQ-Wl5"/>
+                            <constraint firstItem="yrw-hO-q7x" firstAttribute="trailing" secondItem="wEg-30-iv9" secondAttribute="trailing" constant="20" id="I8D-kt-FEB"/>
                             <constraint firstItem="tKg-6H-YvO" firstAttribute="leading" secondItem="yrw-hO-q7x" secondAttribute="leading" id="J1m-LB-m6J"/>
+                            <constraint firstItem="wEg-30-iv9" firstAttribute="leading" secondItem="yrw-hO-q7x" secondAttribute="leading" constant="20" id="KML-R7-Vei"/>
                             <constraint firstItem="tKg-6H-YvO" firstAttribute="trailing" secondItem="yrw-hO-q7x" secondAttribute="trailing" id="dDt-Ln-yNA"/>
-                            <constraint firstItem="wEg-30-iv9" firstAttribute="bottom" secondItem="yrw-hO-q7x" secondAttribute="bottom" id="t3B-ta-Y9H"/>
+                            <constraint firstItem="wEg-30-iv9" firstAttribute="bottom" secondItem="yrw-hO-q7x" secondAttribute="bottom" constant="-20" id="t3B-ta-Y9H"/>
                             <constraint firstItem="tKg-6H-YvO" firstAttribute="top" secondItem="yrw-hO-q7x" secondAttribute="top" id="wjD-jf-Fxn"/>
-                            <constraint firstItem="wEg-30-iv9" firstAttribute="centerX" secondItem="yrw-hO-q7x" secondAttribute="centerX" id="wrA-dH-6oP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yrw-hO-q7x"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YYG-Qa-0mW"/>
+                    <navigationItem key="navigationItem" title="Add Location " id="YYG-Qa-0mW"/>
                     <connections>
                         <outlet property="mapView" destination="tKg-6H-YvO" id="is2-TF-tNv"/>
                     </connections>
@@ -303,5 +311,6 @@
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_refresh" width="24" height="24"/>
+        <image name="icon_world" width="52" height="67"/>
     </resources>
 </document>
