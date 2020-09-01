@@ -16,4 +16,8 @@ struct HttpGateway: Gateway {
     func addStudentLocation(latitude: Double, longitude: Double, searchString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
         completion(false, nil)
     }
+    
+    func updateStudentLocation(objectId: String, latitude: Double, longitude: Double, searchString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
+        completion(false, nil)
+    }
 }

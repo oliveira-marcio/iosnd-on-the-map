@@ -57,4 +57,17 @@ struct MockGateway: Gateway {
             }
         }
     }
+    
+    func updateStudentLocation(objectId: String, latitude: Double, longitude: Double, searchString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
+        loadDataFromAsset(asset: "put-student-location", responseType: UpdateStudentLocationResponse.self) { (response, error) in
+            print("objectId: \(objectId)")
+
+            if let response = response {
+                print("updatedAt: \(response.updatedAt)")
+                completion(true, nil)
+            } else {
+                completion(false, nil)
+            }
+        }
+    }
 }
