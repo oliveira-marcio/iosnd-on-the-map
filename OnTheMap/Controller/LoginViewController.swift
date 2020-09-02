@@ -15,7 +15,42 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButton: CustomButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var signUpButton: UIButton!
+    
+    enum LoginFields: Int {
+        case username, password
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.emailTextField.tag = LoginFields.username.rawValue
+        self.emailTextField.delegate = self
 
+        self.passwordTextField.tag = LoginFields.password.rawValue
+        self.passwordTextField.delegate = self
+        
+        self.logInButton.isEnabled = false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var newText = textField.text! as NSString
+        newText = newText.replacingCharacters(in: range, with: string) as NSString
+        
+        var secondField = ""
+        
+        switch textField.tag {
+        case LoginFields.username.rawValue:
+            secondField = self.passwordTextField?.text ?? ""
+        case LoginFields.password.rawValue:
+            secondField = self.emailTextField?.text ?? ""
+        default:
+            return true
+        }
+        
+        self.logInButton.isEnabled = newText.length > 0 && !secondField.isEmpty
+        return true
+    }
+    
     @IBAction func login(_ sender: Any) {
         guard
             let username = self.emailTextField.text, !username.isEmpty,
