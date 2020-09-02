@@ -98,16 +98,10 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
                 self.addLocationDelegate?.onLocationAdded()
             }
         } else {
-            showAddLocationFailure(message: "Something wrong happened. Please try again.")
+            ErrorUtils.showError(from: self, title: AddLocationErrors.title, message: AddLocationErrors.unknownError)
         }
         
         self.setAddingLocation(false)
-    }
-    
-    private func showAddLocationFailure(message: String) {
-        let alert = UIAlertController(title: "Add Location Failed", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     private func setAddingLocation(_ addingLocation: Bool) {

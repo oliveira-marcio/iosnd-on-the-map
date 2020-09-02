@@ -72,7 +72,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             GatewayFactory.shared.fetchUserData(completion: handleUserDataResponse(success:error:))
         } else {
             self.setLoggingIn(false)
-            self.showLoginFailure(message: error?.localizedDescription ?? "")
+            ErrorUtils.showError(from: self, title: AuthenticationErrors.title, message: error?.localizedDescription ?? "")
         }
     }
     
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.emailTextField.text = ""
             self.passwordTextField.text = ""
         } else {
-            self.showLoginFailure(message: "Error fetching user data.")
+            ErrorUtils.showError(from: self, title: AuthenticationErrors.title, message: AuthenticationErrors.unknownError)
         }
     }
     
@@ -98,11 +98,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.isEnabled = !loggingIn
         self.logInButton.isEnabled = !loggingIn
         loggingIn ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
-    }
-    
-    private func showLoginFailure(message: String) {
-        let alert = UIAlertController(title: "Authentication Failed", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
 }

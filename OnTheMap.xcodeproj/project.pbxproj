@@ -10,6 +10,7 @@
 		9C4AE0E224FF787300BF1963 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0E124FF787300BF1963 /* SessionResponse.swift */; };
 		9C4AE0E424FF78F100BF1963 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0E324FF78F100BF1963 /* Account.swift */; };
 		9C4AE0E624FF790800BF1963 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0E524FF790800BF1963 /* Session.swift */; };
+		9C4AE0ED24FFC30300BF1963 /* ErrorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0EC24FFC30300BF1963 /* ErrorUtils.swift */; };
 		9C66866724FEC154002FB559 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66866624FEC154002FB559 /* LoginViewController.swift */; };
 		9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */; };
 		9CBE717B24F7EC79007A652A /* InformationPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */; };
@@ -42,6 +43,7 @@
 		9C4AE0E124FF787300BF1963 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		9C4AE0E324FF78F100BF1963 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		9C4AE0E524FF790800BF1963 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		9C4AE0EC24FFC30300BF1963 /* ErrorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorUtils.swift; sourceTree = "<group>"; };
 		9C66866624FEC154002FB559 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 		9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingMapViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				9CD145A624F5A6490010EC69 /* Main.storyboard */,
 				9CD145AB24F5A64F0010EC69 /* LaunchScreen.storyboard */,
 				9CF321EF24FE480700110697 /* CustomButton.swift */,
+				9C4AE0EC24FFC30300BF1963 /* ErrorUtils.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */,
 				9C4AE0E424FF78F100BF1963 /* Account.swift in Sources */,
 				9C66866724FEC154002FB559 /* LoginViewController.swift in Sources */,
+				9C4AE0ED24FFC30300BF1963 /* ErrorUtils.swift in Sources */,
 				9CD145BC24F5AB560010EC69 /* Gateway.swift in Sources */,
 				9CBE717B24F7EC79007A652A /* InformationPostingMapViewController.swift in Sources */,
 				9CF321EC24FD8E5F00110697 /* Models.swift in Sources */,

@@ -80,10 +80,10 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                 
                 self.performSegue(withIdentifier: "showLocationResults", sender: nil)
             } else {
-                self.showGeocodeFailure(message: "Couldn't fetch location coordinates. Please try again.")
+                ErrorUtils.showError(from: self, title: GeocodeErrors.title, message: GeocodeErrors.invalidCoordinates)
             }
         } else {
-            self.showGeocodeFailure(message: "Couldn't find a location with provided address. Please try again.")
+            ErrorUtils.showError(from: self, title: GeocodeErrors.title, message: GeocodeErrors.invalidAddress)
         }
         
         self.setGeocoding(false)
@@ -94,12 +94,6 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         self.mediaURLTextField.isEnabled = !geocoding
         self.findLocationButton.isEnabled = !geocoding
         geocoding ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
-    }
-    
-    private func showGeocodeFailure(message: String) {
-        let alert = UIAlertController(title: "Find Location Failed", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
