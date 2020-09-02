@@ -17,6 +17,10 @@ struct HttpGateway: Gateway {
         completion(false, nil)
     }
     
+    func logout(completion: @escaping () -> Void) {
+        completion()
+    }
+    
     func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
         completion([], nil)
     }

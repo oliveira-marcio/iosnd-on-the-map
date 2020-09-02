@@ -120,6 +120,8 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
     }
     
     @IBAction func logout(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        GatewayFactory.shared.logout {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }

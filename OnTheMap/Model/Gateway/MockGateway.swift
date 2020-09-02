@@ -45,6 +45,19 @@ struct MockGateway: Gateway {
         }
     }
     
+    func logout(completion: @escaping () -> Void) {
+        Auth.sessionId = ""
+        Auth.uniqueKey = ""
+        Auth.firstName = ""
+        Auth.lastName = ""
+        
+        LocationModel.studentLocations = [StudentLocation]()
+        LocationModel.currentObjectId = ""
+        
+        print("Logged out")
+        completion()
+    }
+    
     func fetchUserData(completion: @escaping (Bool, Error?) -> Void) {
         guard let path = Bundle.main.path(forResource: "get-user-data", ofType: "json") else {
             completion(false, nil)

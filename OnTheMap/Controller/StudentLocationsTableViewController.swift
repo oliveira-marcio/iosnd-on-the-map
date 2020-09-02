@@ -73,6 +73,8 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     }
     
     @IBAction func logout(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        GatewayFactory.shared.logout {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
