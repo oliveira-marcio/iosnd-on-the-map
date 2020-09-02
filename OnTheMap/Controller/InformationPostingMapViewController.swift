@@ -15,6 +15,8 @@ protocol AddLocationDelegate {
 
 class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
 
+    // MARK: - Outlets and global variables
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var finishButton: CustomButton!
@@ -27,6 +29,8 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
     
     var addLocationDelegate: AddLocationDelegate?
     
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +56,8 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.selectAnnotation(annotation, animated: false)
     }
     
+    // MARK: - Map View Delegate
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -70,6 +76,8 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     
+    // MARK: - Add Location and Handler
+
     @IBAction func addLocation(_ sender: Any) {
         self.setAddingLocation(true)
         if LocationModel.currentObjectId.isEmpty {

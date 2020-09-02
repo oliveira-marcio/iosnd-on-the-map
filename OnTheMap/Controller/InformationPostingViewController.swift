@@ -11,6 +11,8 @@ import CoreLocation
 
 class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - Outlets and global variables
+
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mediaURLTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -27,6 +29,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     
     var addLocationDelegate: AddLocationDelegate?
     
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,10 +43,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         self.findLocationButton.isEnabled = false
     }
     
-    @IBAction func cancelAddLocation(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+    // MARK: - Text Fields Delegate
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.tag == InformationFields.mediaURL.rawValue {
             return true
@@ -60,6 +62,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - Find Location and Handlers
+
     @IBAction func findLocation() {
         guard let searchString = self.searchTextField.text, !searchString.isEmpty else {
             return
@@ -104,5 +108,11 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         mapViewController.longitude = self.longitude!
         mapViewController.mediaURL = self.mediaURLTextField.text ?? ""
         mapViewController.addLocationDelegate = self.addLocationDelegate
+    }
+    
+    // MARK: - Cancel Add Location
+
+    @IBAction func cancelAddLocation(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

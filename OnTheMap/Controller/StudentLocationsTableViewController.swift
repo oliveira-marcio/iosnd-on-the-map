@@ -10,17 +10,16 @@ import UIKit
 
 class StudentLocationsTableViewController: UITableViewController, AddLocationDelegate {
 
+    // MARK: - Outlets and global variables
+
     @IBOutlet weak var studentLocationsTableView: UITableView!
     @IBOutlet weak var refreshBarButton: UIBarButtonItem!
     
     private var activityIndicatorView = UIActivityIndicatorView()
     private var refreshIndicatorView: UIView?
     
-    private func setLoadingLocations(_ loading: Bool) {
-        refreshBarButton.isEnabled = !loading
-        refreshBarButton.customView = loading ? self.activityIndicatorView : self.refreshIndicatorView
-    }
-    
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +35,8 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
         self.studentLocationsTableView.reloadData()
     }
     
+    // MARK: - Get Student Locations and Handlers
+    
     @IBAction func getStudentLocations() {
         self.setLoadingLocations(true)
         GatewayFactory.shared.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
@@ -50,6 +51,11 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
             LocationModel.studentLocations = studentLocations
             self.studentLocationsTableView.reloadData()
         }
+    }
+    
+    private func setLoadingLocations(_ loading: Bool) {
+        refreshBarButton.isEnabled = !loading
+        refreshBarButton.customView = loading ? self.activityIndicatorView : self.refreshIndicatorView
     }
     
     // MARK: - Table view data source
@@ -77,6 +83,8 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
         }
     }
     
+    // MARK: - Add Location and handler
+    
     @IBAction func addLocation(_ sender: Any) {
         if LocationModel.currentObjectId.isEmpty {
             performSegue(withIdentifier: "showAddLocation", sender: sender)
@@ -97,6 +105,8 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     func onLocationAdded() {
         self.getStudentLocations()
     }
+    
+    // MARK: - Logout
     
     @IBAction func logout(_ sender: Any) {
         GatewayFactory.shared.logout {

@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 
 class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, AddLocationDelegate {
+    
+    // MARK: - Outlets and global variables
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var refreshBarButton: UIBarButtonItem!
@@ -17,11 +19,8 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
     private var activityIndicatorView = UIActivityIndicatorView()
     private var refreshIndicatorView: UIView?
     
-    private func setLoadingLocations(_ loading: Bool) {
-        refreshBarButton.isEnabled = !loading
-        refreshBarButton.customView = loading ? self.activityIndicatorView : self.refreshIndicatorView
-    }
-
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,23 +31,8 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
         self.refreshIndicatorView = refreshBarButton.customView
 
         self.mapView.delegate = self
-        // self.getStudentLocations()
-        // MARK: TODO For testing purposes. Replace for commented out code above later
-        self.handleStudentLocationsResponse(
-            studentLocations: [
-                StudentLocation(
-                    createdAt: "2015-02-25T01:10:38.103Z",
-                    firstName: "Jarrod",
-                    lastName: "Parkes",
-                    latitude: 34.7303688,
-                    longitude: -86.5861037,
-                    mapString: "Huntsville, Alabama ",
-                    mediaURL: "https://www.linkedin.com/in/jarrodparkes",
-                    objectId: "JhOtcRkxsh", uniqueKey: "996618664",
-                    updatedAt: "2015-03-09T22:04:50.315Z"
-                )
-            ],
-            error: nil)
+        
+        self.getStudentLocations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +40,8 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
         self.loadMapAnnotations()
     }
     
+    // MARK: - Get Student Locations and Handlers
+
     @IBAction func getStudentLocations() {
         self.setLoadingLocations(true)
         GatewayFactory.shared.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
@@ -72,6 +58,11 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
         }
     }
     
+    private func setLoadingLocations(_ loading: Bool) {
+        refreshBarButton.isEnabled = !loading
+        refreshBarButton.customView = loading ? self.activityIndicatorView : self.refreshIndicatorView
+    }
+
     private func loadMapAnnotations() {
         var annotations = [MKPointAnnotation]()
         
@@ -90,6 +81,8 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
         
         self.mapView.showAnnotations(annotations, animated: true)
     }
+    
+    // MARK: - Map View Delegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -120,6 +113,8 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
         }
     }
     
+    // MARK: - Start Add Location and Handler
+    
     @IBAction func addLocation(_ sender: Any) {
         if LocationModel.currentObjectId.isEmpty {
             performSegue(withIdentifier: "showAddLocation", sender: sender)
@@ -141,6 +136,8 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
         self.getStudentLocations()
     }
     
+    // MARK: - Logout
+
     @IBAction func logout(_ sender: Any) {
         GatewayFactory.shared.logout {
             self.dismiss(animated: true, completion: nil)

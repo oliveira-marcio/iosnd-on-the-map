@@ -9,7 +9,9 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    
+
+    // MARK: - Outlets and global variables
+
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: CustomButton!
@@ -19,6 +21,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     enum LoginFields: Int {
         case username, password
     }
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +35,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.logInButton.isEnabled = false
     }
+    
+    // MARK: - Text Fields Delegate
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var newText = textField.text! as NSString
@@ -56,6 +62,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - Log In and Handlers
+
     @IBAction func login(_ sender: Any) {
         guard
             let username = self.emailTextField.text, !username.isEmpty,
@@ -87,16 +95,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func signUp(_ sender: Any) {
-        if let udacitySignUpURL = URL(string: "https://auth.udacity.com/sign-up") {
-            UIApplication.shared.open(udacitySignUpURL)
-        }
-    }
-    
     private func setLoggingIn(_ loggingIn: Bool) {
         self.emailTextField.isEnabled = !loggingIn
         self.passwordTextField.isEnabled = !loggingIn
         self.logInButton.isEnabled = !loggingIn
         loggingIn ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
+    }
+
+    // MARK: - Sign Up
+
+    @IBAction func signUp(_ sender: Any) {
+        if let udacitySignUpURL = URL(string: "https://auth.udacity.com/sign-up") {
+            UIApplication.shared.open(udacitySignUpURL)
+        }
     }
 }

@@ -126,9 +126,9 @@
 		9CD1459F24F5A6490010EC69 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				9CD145AE24F5A64F0010EC69 /* Info.plist */,
 				9CD145A024F5A6490010EC69 /* AppDelegate.swift */,
 				9CD145A224F5A6490010EC69 /* SceneDelegate.swift */,
-				9CD145AE24F5A64F0010EC69 /* Info.plist */,
 				9CD145B724F5A7A10010EC69 /* Model */,
 				9CD145B424F5A7000010EC69 /* Controller */,
 				9CD145B524F5A76A0010EC69 /* View */,
