@@ -13,6 +13,10 @@ struct HttpGateway: Gateway {
         completion(false, nil)
     }
     
+    func fetchUserData(completion: @escaping (Bool, Error?) -> Void) {
+        completion(false, nil)
+    }
+    
     func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
         completion([], nil)
     }

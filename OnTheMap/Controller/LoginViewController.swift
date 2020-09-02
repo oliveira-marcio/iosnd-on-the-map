@@ -68,13 +68,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func handleSessionResponse(success: Bool, error: Error?) {
+        if success {
+            GatewayFactory.shared.fetchUserData(completion: handleUserDataResponse(success:error:))
+        } else {
+            self.setLoggingIn(false)
+            self.showLoginFailure(message: error?.localizedDescription ?? "")
+        }
+    }
+    
+    private func handleUserDataResponse(success: Bool, error: Error?) {
         self.setLoggingIn(false)
         if success {
             performSegue(withIdentifier: "completeLogin", sender: nil)
             self.emailTextField.text = ""
             self.passwordTextField.text = ""
         } else {
-            self.showLoginFailure(message: error?.localizedDescription ?? "")
+            self.showLoginFailure(message: "Error fetching user data.")
         }
     }
     

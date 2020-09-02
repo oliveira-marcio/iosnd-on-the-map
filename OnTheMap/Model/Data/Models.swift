@@ -9,11 +9,10 @@
 import Foundation
 
 struct Auth {
-    // MARK: TODO - Should be empty. Just for test purposes.
     static var sessionId: String = ""
     static var uniqueKey: String = ""
-    static var firstName: String = "Márcio"
-    static var lastName: String = "Oliveira"
+    static var firstName: String = ""
+    static var lastName: String = ""
 }
 
 struct LocationModel {

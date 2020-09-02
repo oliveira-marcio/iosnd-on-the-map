@@ -45,6 +45,36 @@ struct MockGateway: Gateway {
         }
     }
     
+    func fetchUserData(completion: @escaping (Bool, Error?) -> Void) {
+        guard let path = Bundle.main.path(forResource: "get-user-data", ofType: "json") else {
+            completion(false, nil)
+            return
+        }
+
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                
+                let user = json["user"] as! [String: Any]
+                let firstName = user["first_name"] as! String
+                let lastName = user["last_name"] as! String
+                
+                print("Name: \(firstName) \(lastName)")
+                Auth.firstName = firstName
+                Auth.lastName = lastName
+                
+                completion(true, nil)
+            } catch {
+                completion(false, nil)
+                print("Parse error: \(error)")
+            }
+        } catch let error {
+            completion(false, error)
+            print("File error: \(error)")
+        }
+    }
+    
     func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
         loadDataFromAsset(asset: "get-student-locations", responseType: StudentLocationsResults.self) { (response, error) in
             if let response = response {
