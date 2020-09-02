@@ -31,6 +31,20 @@ struct MockGateway: Gateway {
         }
     }
     
+    func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        loadDataFromAsset(asset: "post-session", responseType: SessionResponse.self) { (response, error) in
+            if let response = response {
+                print("sessionId: \(response.session.id)")
+                print("uniqueKey: \(response.account.key)")
+                Auth.sessionId = response.session.id
+                Auth.uniqueKey = response.account.key
+                completion(true, nil)
+            } else {
+                completion(false, nil)
+            }
+        }
+    }
+    
     func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
         loadDataFromAsset(asset: "get-student-locations", responseType: StudentLocationsResults.self) { (response, error) in
             if let response = response {

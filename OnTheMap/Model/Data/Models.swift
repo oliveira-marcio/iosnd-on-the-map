@@ -10,7 +10,8 @@ import Foundation
 
 struct Auth {
     // MARK: TODO - Should be empty. Just for test purposes.
-    static var uniqueKey: String = "1234abcd"
+    static var sessionId: String = ""
+    static var uniqueKey: String = ""
     static var firstName: String = "Márcio"
     static var lastName: String = "Oliveira"
 }
