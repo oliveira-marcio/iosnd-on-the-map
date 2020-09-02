@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xCq-eS-uGG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xCq-eS-uGG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -85,6 +85,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Frh-Am-HCB" id="rkR-Od-b9e"/>
+                        <outlet property="refreshBarButton" destination="boR-Ak-0T7" id="zft-wz-loj"/>
                         <segue destination="cK3-K1-PdM" kind="presentation" identifier="showAddLocation" modalPresentationStyle="fullScreen" id="iA4-5m-Yxf"/>
                     </connections>
                 </viewController>
@@ -262,6 +263,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="refreshBarButton" destination="ML7-XE-SdM" id="2uP-HF-i1R"/>
                         <outlet property="studentLocationsTableView" destination="Ryr-2h-tDo" id="ups-70-7Uu"/>
                         <segue destination="cK3-K1-PdM" kind="presentation" identifier="showAddLocation" modalPresentationStyle="fullScreen" id="9CV-ec-ouE"/>
                     </connections>

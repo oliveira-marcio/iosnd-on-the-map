@@ -11,17 +11,38 @@ import UIKit
 class StudentLocationsTableViewController: UITableViewController, AddLocationDelegate {
 
     @IBOutlet weak var studentLocationsTableView: UITableView!
+    @IBOutlet weak var refreshBarButton: UIBarButtonItem!
     
+    private var activityIndicatorView = UIActivityIndicatorView()
+    private var refreshIndicatorView: UIView?
+    
+    private func setLoadingLocations(_ loading: Bool) {
+        refreshBarButton.isEnabled = !loading
+        refreshBarButton.customView = loading ? self.activityIndicatorView : self.refreshIndicatorView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.activityIndicatorView.sizeToFit()
+        self.activityIndicatorView.color = self.view.tintColor
+        self.activityIndicatorView.startAnimating()
+        
+        self.refreshIndicatorView = refreshBarButton.customView
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.studentLocationsTableView.reloadData()
     }
     
     @IBAction func getStudentLocations() {
+        self.setLoadingLocations(true)
         GatewayFactory.shared.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
     private func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
+        self.setLoadingLocations(false)
         LocationModel.studentLocations = studentLocations
         self.studentLocationsTableView.reloadData()
     }

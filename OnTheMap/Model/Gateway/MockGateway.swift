@@ -14,21 +14,23 @@ struct MockGateway: Gateway {
             completion(nil, nil)
             return
         }
-
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             do {
-                let decoder = JSONDecoder()
-                let responseObject = try decoder.decode(ResponseType.self, from: data)
-                completion(responseObject, nil)
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                do {
+                    let decoder = JSONDecoder()
+                    let responseObject = try decoder.decode(ResponseType.self, from: data)
+                    completion(responseObject, nil)
+                } catch let error {
+                    completion(nil, error)
+                    print("Parse error: \(error)")
+                }
             } catch let error {
                 completion(nil, error)
-                print("Parse error: \(error)")
+                print("File error: \(error)")
             }
-        } catch let error {
-            completion(nil, error)
-            print("File error: \(error)")
-        }
+        })
     }
     
     func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
