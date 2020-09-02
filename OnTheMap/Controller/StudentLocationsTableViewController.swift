@@ -43,8 +43,19 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
     
     private func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
         self.setLoadingLocations(false)
-        LocationModel.studentLocations = studentLocations
-        self.studentLocationsTableView.reloadData()
+
+        if let _ = error {
+            self.showLocationError(message: "Couldn't retrieve student locations. Please try again.")
+        } else {
+            LocationModel.studentLocations = studentLocations
+            self.studentLocationsTableView.reloadData()
+        }
+    }
+    
+    private func showLocationError(message: String) {
+        let alert = UIAlertController(title: "Student Locations Failed", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source
