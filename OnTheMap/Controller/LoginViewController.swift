@@ -51,6 +51,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func login(_ sender: Any) {
         guard
             let username = self.emailTextField.text, !username.isEmpty,
@@ -63,7 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func handleSessionResponse(success: Bool, error: Error?) {
-        self.setLoggingIn(true)
+        self.setLoggingIn(false)
         if success {
             performSegue(withIdentifier: "completeLogin", sender: nil)
             self.emailTextField.text = ""

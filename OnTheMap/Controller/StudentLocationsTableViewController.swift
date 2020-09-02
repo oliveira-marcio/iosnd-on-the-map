@@ -21,7 +21,7 @@ class StudentLocationsTableViewController: UITableViewController, AddLocationDel
         GatewayFactory.shared.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
-    func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
+    private func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
         LocationModel.studentLocations = studentLocations
         self.studentLocationsTableView.reloadData()
     }

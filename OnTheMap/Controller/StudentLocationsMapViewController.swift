@@ -45,12 +45,12 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
         GatewayFactory.shared.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
-    func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
+    private func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
         LocationModel.studentLocations = studentLocations
         self.loadMapAnnotations()
     }
     
-    func loadMapAnnotations() {
+    private func loadMapAnnotations() {
         var annotations = [MKPointAnnotation]()
         
         for studentLocation in LocationModel.studentLocations {

@@ -34,7 +34,7 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
         self.loadMapResults()
     }
     
-    func loadMapResults() {
+    private func loadMapResults() {
         let annotation = MKPointAnnotation()
         
         var title = self.searchString
@@ -92,7 +92,7 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func handleAddLocationResponse(success: Bool, error: Error?) {
+    private func handleAddLocationResponse(success: Bool, error: Error?) {
         if success {
             self.dismiss(animated: true) {
                 self.addLocationDelegate?.onLocationAdded()
@@ -104,13 +104,13 @@ class InformationPostingMapViewController: UIViewController, MKMapViewDelegate {
         self.setAddingLocation(false)
     }
     
-    func showAddLocationFailure(message: String) {
+    private func showAddLocationFailure(message: String) {
         let alert = UIAlertController(title: "Add Location Failed", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setAddingLocation(_ addingLocation: Bool) {
+    private func setAddingLocation(_ addingLocation: Bool) {
         self.finishButton.isEnabled = !addingLocation
         addingLocation ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
     }

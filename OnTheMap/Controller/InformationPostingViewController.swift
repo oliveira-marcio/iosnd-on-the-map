@@ -16,6 +16,10 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var findLocationButton: UIButton!
     
+    enum InformationFields: Int {
+        case search, mediaURL
+    }
+    
     var searchString: String?
     var latitude: Double?
     var longitude: Double?
@@ -25,7 +29,13 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.searchTextField.delegate = self
+        self.searchTextField.tag = InformationFields.search.rawValue
+
+        self.mediaURLTextField.delegate = self
+        self.mediaURLTextField.tag = InformationFields.mediaURL.rawValue
+
         self.findLocationButton.isEnabled = false
     }
     
@@ -34,9 +44,19 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == InformationFields.mediaURL.rawValue {
+            return true
+        }
+        
         var newText = textField.text! as NSString
         newText = newText.replacingCharacters(in: range, with: string) as NSString
+        
         self.findLocationButton.isEnabled = newText.length > 0
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
     
@@ -51,7 +71,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         CLGeocoder().geocodeAddressString(searchString, completionHandler: handleGeocodeResponse(placemarks:error:))
     }
     
-    func handleGeocodeResponse(placemarks: [CLPlacemark]?, error: Error?) {
+    private func handleGeocodeResponse(placemarks: [CLPlacemark]?, error: Error?) {
         if let placemark = placemarks?.first {
             if let location = placemark.location {
                 self.latitude = location.coordinate.latitude
@@ -69,14 +89,14 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         self.setGeocoding(false)
     }
     
-    func setGeocoding(_ geocoding: Bool) {
+    private func setGeocoding(_ geocoding: Bool) {
         self.searchTextField.isEnabled = !geocoding
         self.mediaURLTextField.isEnabled = !geocoding
         self.findLocationButton.isEnabled = !geocoding
         geocoding ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
     }
     
-    func showGeocodeFailure(message: String) {
+    private func showGeocodeFailure(message: String) {
         let alert = UIAlertController(title: "Find Location Failed", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
