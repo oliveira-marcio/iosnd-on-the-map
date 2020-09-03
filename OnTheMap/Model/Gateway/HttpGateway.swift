@@ -63,7 +63,6 @@ struct HttpGateway: Gateway {
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }
-                print("Parse error: \(error)")
             }
         }
         task.resume()
@@ -118,7 +117,6 @@ struct HttpGateway: Gateway {
                     completion(true, nil)
                 }
             } catch {
-                print("Parse error: \(error)")
                 DispatchQueue.main.async {
                     completion(false, error)
                 }
@@ -128,7 +126,34 @@ struct HttpGateway: Gateway {
     }
     
     func logout(completion: @escaping () -> Void) {
-        completion()
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        
+        for cookie in sharedCookieStorage.cookies! {
+          if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+          request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            Auth.sessionId = ""
+            Auth.uniqueKey = ""
+            Auth.firstName = ""
+            Auth.lastName = ""
+            
+            LocationModel.studentLocations = [StudentLocation]()
+            LocationModel.currentObjectId = ""
+            
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+        task.resume()
     }
     
     func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {
@@ -151,7 +176,6 @@ struct HttpGateway: Gateway {
                 DispatchQueue.main.async {
                     completion([], error)
                 }
-                print("Parse error: \(error)")
             }
         }
         task.resume()
