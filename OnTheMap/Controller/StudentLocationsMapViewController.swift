@@ -79,6 +79,7 @@ class StudentLocationsMapViewController: UIViewController, MKMapViewDelegate, Ad
             annotations.append(annotation)
         }
         
+        self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapView.showAnnotations(annotations, animated: true)
     }
     

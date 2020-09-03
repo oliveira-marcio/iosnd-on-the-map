@@ -11,7 +11,7 @@ import Foundation
 struct HttpGateway: Gateway {
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
-        
+
         case getStudentLocations
         case createStudentLocations
         case updateStudentLocation(String)
@@ -33,6 +33,36 @@ struct HttpGateway: Gateway {
         var url: URL {
             return URL(string: stringValue)!
         }
+    }
+    
+    private func taskForPOSTAndPUTRequests<RequestType: Encodable, ResponseType: Decodable>(url: URL, httpMethod: String, requestBody: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try! JSONEncoder().encode(requestBody)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch let error {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                print("Parse error: \(error)")
+            }
+        }
+        task.resume()
     }
     
     func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
@@ -78,50 +108,43 @@ struct HttpGateway: Gateway {
     }
     
     func addStudentLocation(latitude: Double, longitude: Double, searchString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
-        var request = URLRequest(url: Endpoints.getStudentLocations.url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try! JSONEncoder().encode(
-            AddStudentLocation(
-                uniqueKey: Auth.uniqueKey,
-                firstName: Auth.firstName,
-                lastName: Auth.lastName,
-                mapString: searchString,
-                mediaURL: mediaURL,
-                latitude: latitude,
-                longitude: longitude
-            )
+        let requestBody = AddStudentLocation(
+            uniqueKey: Auth.uniqueKey,
+            firstName: Auth.firstName,
+            lastName: Auth.lastName,
+            mapString: searchString,
+            mediaURL: mediaURL,
+            latitude: latitude,
+            longitude: longitude
         )
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(false, error)
-                }
-                return
-            }
-
-            let decoder = JSONDecoder()
-            do {
-                let responseObject = try decoder.decode(AddStudentLocationResponse.self, from: data)
-                print("objectId: \(responseObject.objectId)")
-                LocationModel.currentObjectId = responseObject.objectId
-                DispatchQueue.main.async {
-                    completion(true, nil)
-                }
-            } catch let error {
-                DispatchQueue.main.async {
-                    completion(false, error)
-                }
-                print("Parse error: \(error)")
+        taskForPOSTAndPUTRequests(url: Endpoints.createStudentLocations.url, httpMethod: "POST", requestBody: requestBody, responseType: AddStudentLocationResponse.self) { (response, error) in
+            if let response = response {
+                LocationModel.currentObjectId = response.objectId
+                completion(true, nil)
+            } else {
+                completion(false, error)
             }
         }
-        task.resume()
     }
     
     func updateStudentLocation(objectId: String, latitude: Double, longitude: Double, searchString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
-        MockGateway().updateStudentLocation(objectId: objectId, latitude: latitude, longitude: longitude, searchString: searchString, mediaURL: mediaURL) { (success, error) in
-             completion(success, error)
+        let requestBody = AddStudentLocation(
+            uniqueKey: Auth.uniqueKey,
+            firstName: Auth.firstName,
+            lastName: Auth.lastName,
+            mapString: searchString,
+            mediaURL: mediaURL,
+            latitude: latitude,
+            longitude: longitude
+        )
+        
+        taskForPOSTAndPUTRequests(url: Endpoints.updateStudentLocation(objectId).url, httpMethod: "PUT", requestBody: requestBody, responseType: UpdateStudentLocationResponse.self) { (response, error) in
+            if let _ = response {
+                completion(true, nil)
+            } else {
+                completion(false, error)
+            }
         }
     }
 }
