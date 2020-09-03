@@ -11,6 +11,7 @@
 		9C4AE0E424FF78F100BF1963 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0E324FF78F100BF1963 /* Account.swift */; };
 		9C4AE0E624FF790800BF1963 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0E524FF790800BF1963 /* Session.swift */; };
 		9C4AE0ED24FFC30300BF1963 /* ErrorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0EC24FFC30300BF1963 /* ErrorUtils.swift */; };
+		9C4AE0F02500D55100BF1963 /* AddStudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0EF2500D55100BF1963 /* AddStudentLocation.swift */; };
 		9C66866724FEC154002FB559 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66866624FEC154002FB559 /* LoginViewController.swift */; };
 		9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */; };
 		9CBE717B24F7EC79007A652A /* InformationPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */; };
@@ -44,6 +45,7 @@
 		9C4AE0E324FF78F100BF1963 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		9C4AE0E524FF790800BF1963 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		9C4AE0EC24FFC30300BF1963 /* ErrorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorUtils.swift; sourceTree = "<group>"; };
+		9C4AE0EF2500D55100BF1963 /* AddStudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentLocation.swift; sourceTree = "<group>"; };
 		9C66866624FEC154002FB559 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 		9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingMapViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 				9CF321ED24FE368500110697 /* UpdateStudentLocationResponse.swift */,
 			);
 			path = StudentLocation;
+			sourceTree = "<group>";
+		};
+		9C4AE0EE2500D50500BF1963 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				9C4AE0EF2500D55100BF1963 /* AddStudentLocation.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		9CD1459424F5A6490010EC69 = {
@@ -174,7 +184,7 @@
 			children = (
 				9CD145B824F5A7B30010EC69 /* Data */,
 				9CF321EA24FD8E3400110697 /* Gateway */,
-				9CD145D024F645A40010EC69 /* ParseResponses */,
+				9CD145D024F645A40010EC69 /* Responses */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,13 +227,14 @@
 			path = MockData;
 			sourceTree = "<group>";
 		};
-		9CD145D024F645A40010EC69 /* ParseResponses */ = {
+		9CD145D024F645A40010EC69 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
 				9C4AE0E824FF97A200BF1963 /* Session */,
 				9C4AE0E924FF97CD00BF1963 /* StudentLocation */,
+				9C4AE0EE2500D50500BF1963 /* Requests */,
 			);
-			path = ParseResponses;
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		9CF321EA24FD8E3400110697 /* Gateway */ = {
@@ -320,6 +331,7 @@
 				9CD145D724F7972E0010EC69 /* StudentLocationsTableViewController.swift in Sources */,
 				9CD145BE24F5AB790010EC69 /* MockGateway.swift in Sources */,
 				9C4AE0E624FF790800BF1963 /* Session.swift in Sources */,
+				9C4AE0F02500D55100BF1963 /* AddStudentLocation.swift in Sources */,
 				9CF321F024FE480700110697 /* CustomButton.swift in Sources */,
 				9CD145D224F645D90010EC69 /* StudentLocation.swift in Sources */,
 				9CD145A124F5A6490010EC69 /* AppDelegate.swift in Sources */,
