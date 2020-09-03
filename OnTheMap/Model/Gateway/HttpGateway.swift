@@ -9,6 +9,7 @@
 import Foundation
 
 struct HttpGateway: Gateway {
+    
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
 
@@ -16,7 +17,7 @@ struct HttpGateway: Gateway {
         case createStudentLocations
         case updateStudentLocation(String)
         case login
-        case getUserData(String)
+        case getUserData
         case logout
         
         var stringValue: String {
@@ -25,7 +26,7 @@ struct HttpGateway: Gateway {
             case .createStudentLocations: return Endpoints.base + "/StudentLocation"
             case .updateStudentLocation(let objectId): return Endpoints.base + "/StudentLocation/\(objectId)"
             case .login: return Endpoints.base + "/session"
-            case .getUserData(let uniqueKey): return Endpoints.base + "/users/\(uniqueKey)"
+            case .getUserData: return Endpoints.base + "/users/\(Auth.uniqueKey)"
             case .logout: return Endpoints.base + "/session"
             }
         }
@@ -72,9 +73,47 @@ struct HttpGateway: Gateway {
     }
     
     func fetchUserData(completion: @escaping (Bool, Error?) -> Void) {
-        MockGateway().fetchUserData() { (success, error) in
-             completion(success, error)
+        enum SerializationError: Error {
+            case missing(String)
         }
+        
+        let request = URLRequest(url: Endpoints.getUserData.url)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
+            }
+            
+            let newData = data.subdata(in: 5..<data.count) /* exclude Udacity prefix response */
+
+            do {
+                let json = try JSONSerialization.jsonObject(with: newData, options: []) as! [String: Any]
+                
+                guard let firstName = json["first_name"] as? String else {
+                    throw SerializationError.missing("first_name")
+                }
+                
+                guard let lastName = json["last_name"] as? String else {
+                    throw SerializationError.missing("last_name")
+                }
+                
+                print("Name: \(firstName) \(lastName)")
+                Auth.firstName = firstName
+                Auth.lastName = lastName
+                
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
+            } catch {
+                print("Parse error: \(error)")
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+            }
+        }
+        task.resume()
     }
     
     func logout(completion: @escaping () -> Void) {

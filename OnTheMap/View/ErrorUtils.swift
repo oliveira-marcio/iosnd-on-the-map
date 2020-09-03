@@ -21,7 +21,7 @@ class ErrorUtils {
 
 struct AuthenticationErrors {
     static let title = "Authentication Failed"
-    static let unknownError = "Error fetching user data."
+    static let unknownError = "Error fetching user data. Please try again."
 }
 
 struct StudentLocationsErrors {

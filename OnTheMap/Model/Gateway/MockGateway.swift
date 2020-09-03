@@ -65,15 +65,25 @@ struct MockGateway: Gateway {
             completion(false, nil)
             return
         }
-
+        
+        enum SerializationError: Error {
+            case missing(String)
+        }
+        
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let newData = data.subdata(in: 5..<data.count) /* exclude Udacity prefix response */
+            
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                let json = try JSONSerialization.jsonObject(with: newData, options: []) as! [String: Any]
                 
-                let user = json["user"] as! [String: Any]
-                let firstName = user["first_name"] as! String
-                let lastName = user["last_name"] as! String
+                guard let firstName = json["first_name"] as? String else {
+                    throw SerializationError.missing("first_name")
+                }
+                
+                guard let lastName = json["last_name"] as? String else {
+                    throw SerializationError.missing("last_name")
+                }
                 
                 print("Name: \(firstName) \(lastName)")
                 Auth.firstName = firstName
