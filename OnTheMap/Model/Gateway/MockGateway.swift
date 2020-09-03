@@ -9,7 +9,7 @@
 import Foundation
 
 struct MockGateway: Gateway {
-    func loadDataFromAsset<ResponseType: Decodable>(asset: String, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    func loadDataFromAsset<ResponseType: Decodable>(asset: String, responseType: ResponseType.Type, responseHasUdacityPrefix: Bool = false, completion: @escaping (ResponseType?, Error?) -> Void) {
         guard let path = Bundle.main.path(forResource: asset, ofType: "json") else {
             completion(nil, nil)
             return
@@ -18,9 +18,11 @@ struct MockGateway: Gateway {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let newData = responseHasUdacityPrefix ? data.subdata(in: 5..<data.count) : data /* exclude Udacity prefix response */
+                
                 do {
                     let decoder = JSONDecoder()
-                    let responseObject = try decoder.decode(ResponseType.self, from: data)
+                    let responseObject = try decoder.decode(ResponseType.self, from: newData)
                     completion(responseObject, nil)
                 } catch let error {
                     completion(nil, error)
@@ -34,7 +36,7 @@ struct MockGateway: Gateway {
     }
     
     func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-        loadDataFromAsset(asset: "post-session", responseType: SessionResponse.self) { (response, error) in
+        loadDataFromAsset(asset: "post-session", responseType: SessionResponse.self, responseHasUdacityPrefix: true) { (response, error) in
             if let response = response {
                 print("sessionId: \(response.session.id)")
                 print("uniqueKey: \(response.account.key)")
@@ -111,7 +113,7 @@ struct MockGateway: Gateway {
     }
     
     func addStudentLocation(latitude: Double, longitude: Double, searchString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
-        loadDataFromAsset(asset: "post-student-location", responseType: AddStudentLocationResponse.self) { (response, error) in
+        loadDataFromAsset(asset: "post-student-location", responseType: AddStudentLocationResponse.self, responseHasUdacityPrefix: false) { (response, error) in
             print("latitude: \(latitude)")
             print("longitude: \(longitude)")
             print("searchString: \(searchString)")

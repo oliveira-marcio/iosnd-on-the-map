@@ -12,6 +12,8 @@
 		9C4AE0E624FF790800BF1963 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0E524FF790800BF1963 /* Session.swift */; };
 		9C4AE0ED24FFC30300BF1963 /* ErrorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0EC24FFC30300BF1963 /* ErrorUtils.swift */; };
 		9C4AE0F02500D55100BF1963 /* AddStudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0EF2500D55100BF1963 /* AddStudentLocation.swift */; };
+		9C4AE0F22501534300BF1963 /* CreateSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0F12501534300BF1963 /* CreateSession.swift */; };
+		9C4AE0F4250153B300BF1963 /* UdacityCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4AE0F3250153B300BF1963 /* UdacityCredentials.swift */; };
 		9C66866724FEC154002FB559 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66866624FEC154002FB559 /* LoginViewController.swift */; };
 		9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */; };
 		9CBE717B24F7EC79007A652A /* InformationPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */; };
@@ -46,6 +48,8 @@
 		9C4AE0E524FF790800BF1963 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		9C4AE0EC24FFC30300BF1963 /* ErrorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorUtils.swift; sourceTree = "<group>"; };
 		9C4AE0EF2500D55100BF1963 /* AddStudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentLocation.swift; sourceTree = "<group>"; };
+		9C4AE0F12501534300BF1963 /* CreateSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSession.swift; sourceTree = "<group>"; };
+		9C4AE0F3250153B300BF1963 /* UdacityCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityCredentials.swift; sourceTree = "<group>"; };
 		9C66866624FEC154002FB559 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CBE717824F7EC1F007A652A /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 		9CBE717A24F7EC79007A652A /* InformationPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingMapViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 		9C4AE0EE2500D50500BF1963 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				9C4AE0F3250153B300BF1963 /* UdacityCredentials.swift */,
+				9C4AE0F12501534300BF1963 /* CreateSession.swift */,
 				9C4AE0EF2500D55100BF1963 /* AddStudentLocation.swift */,
 			);
 			path = Requests;
@@ -329,6 +335,7 @@
 				9C4AE0E224FF787300BF1963 /* SessionResponse.swift in Sources */,
 				9CD145BA24F5AAF10010EC69 /* GatewayFactory.swift in Sources */,
 				9CD145D724F7972E0010EC69 /* StudentLocationsTableViewController.swift in Sources */,
+				9C4AE0F4250153B300BF1963 /* UdacityCredentials.swift in Sources */,
 				9CD145BE24F5AB790010EC69 /* MockGateway.swift in Sources */,
 				9C4AE0E624FF790800BF1963 /* Session.swift in Sources */,
 				9C4AE0F02500D55100BF1963 /* AddStudentLocation.swift in Sources */,
@@ -338,6 +345,7 @@
 				9CD145D424F646850010EC69 /* StudentLocationsResults.swift in Sources */,
 				9CD145C024F5AB9B0010EC69 /* HttpGateway.swift in Sources */,
 				9CF321E924FD830B00110697 /* AddStudentLocationResponse.swift in Sources */,
+				9C4AE0F22501534300BF1963 /* CreateSession.swift in Sources */,
 				9CD145A324F5A6490010EC69 /* SceneDelegate.swift in Sources */,
 				9CF321EE24FE368600110697 /* UpdateStudentLocationResponse.swift in Sources */,
 				9CBE717924F7EC1F007A652A /* InformationPostingViewController.swift in Sources */,

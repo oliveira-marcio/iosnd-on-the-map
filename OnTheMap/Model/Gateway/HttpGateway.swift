@@ -36,9 +36,10 @@ struct HttpGateway: Gateway {
         }
     }
     
-    private func taskForPOSTAndPUTRequests<RequestType: Encodable, ResponseType: Decodable>(url: URL, httpMethod: String, requestBody: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    private func taskForPOSTAndPUTRequests<RequestType: Encodable, ResponseType: Decodable>(url: URL, httpMethod: String, requestBody: RequestType, responseType: ResponseType.Type, responseHasUdacityPrefix: Bool = false, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try! JSONEncoder().encode(requestBody)
         
@@ -50,9 +51,11 @@ struct HttpGateway: Gateway {
                 return
             }
 
+            let newData = responseHasUdacityPrefix ? data.subdata(in: 5..<data.count) : data /* exclude Udacity prefix response */
+            
             let decoder = JSONDecoder()
             do {
-                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                let responseObject = try decoder.decode(ResponseType.self, from: newData)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
@@ -67,8 +70,16 @@ struct HttpGateway: Gateway {
     }
     
     func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-        MockGateway().login(username: username, password: password) { (success, error) in
-             completion(success, error)
+        let requestBody = CreateSession(udacity: UdacityCredentials(username: username, password: password))
+        
+        taskForPOSTAndPUTRequests(url: Endpoints.login.url, httpMethod: "POST", requestBody: requestBody, responseType: SessionResponse.self, responseHasUdacityPrefix: true) { (response, error) in
+            if let response = response {
+                Auth.sessionId = response.session.id
+                Auth.uniqueKey = response.account.key
+                completion(true, nil)
+            } else {
+                completion(false, error)
+            }
         }
     }
     
