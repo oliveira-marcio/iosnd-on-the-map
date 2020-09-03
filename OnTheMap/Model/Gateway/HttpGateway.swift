@@ -59,9 +59,16 @@ struct HttpGateway: Gateway {
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
-            } catch let error {
-                DispatchQueue.main.async {
-                    completion(nil, error)
+            } catch {
+                do {
+                    let errorResponse = try decoder.decode(SessionErrorResponse.self, from: newData)
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch let error {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
                 }
             }
         }
