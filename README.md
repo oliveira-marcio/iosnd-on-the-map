@@ -12,8 +12,6 @@ App will also allow users to search locations by address and add it as a new loc
 
 Finally, the app will require user authentication using Udacity credentials, so it is necessary to have an Udacity account (app provides a button on the main screen that leads to the Udacity sign-up page).
 
-It's a simple app that plays around with `AVFoundation` where users can record their voices and play with different effects (echo, pitch distortion, reverb, etc.)
-
 **Technical Approach**
 - App can work with real API data and fake data. Fake data consists of a mock gateway that will always generate static data, so it helps to test the app without internet connection and accelerated the app development.
 - `MapKit` was used to display maps and pins.
